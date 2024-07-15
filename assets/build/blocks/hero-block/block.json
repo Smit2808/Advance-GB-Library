@@ -1,0 +1,25 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "name": "advance-gb-learning/hero-block",
+  "version": "0.1.0",
+  "title": "Hero Block",
+  "category": "advance-gb-learning",
+  "icon": "lock",
+  "description": "This is a static Hero Block which has elements and design related settings.",
+  "keywords": [
+    "Hero",
+    "Block"
+  ],
+  "supports": {
+    "html": false
+  },
+  "textdomain": "advance-gb-learning",
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "editorScript": "file:./index.js",
+  "style": "file:./style-index.css"
+}
