@@ -31,18 +31,27 @@ export default function Edit( props ) {
 					onSelect={ onSelectTab }
 					tabs={ [
 						{
-							name: 'tab1',
-							title: 'Tab 1',
-							className: 'tab-one',
+							name: 'general',
+							title: 'General',
+							className: 'general-tab',
 						},
 						{
-							name: 'tab2',
-							title: 'Tab 2',
-							className: 'tab-two',
+							name: 'design',
+							title: 'Design',
+							className: 'design-tab',
 						},
 					] }
 				>
-					{ ( tab ) => <p>{ tab.title }</p> }
+					{ ( tab ) => (
+						<div className="tab-panel-description-area">
+							{ tab.title === 'General' ? (
+								<div>this is General tab</div>
+							) : (
+								<div>this is tab 2</div>
+							) }
+						</div>
+					) }
+					{ /* { ( tab ) => <p>{ tab.name }</p> } */ }
 				</TabPanel>
 			</InspectorControls>
 			<div { ...blockProps }>
