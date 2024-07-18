@@ -12,7 +12,19 @@
   },
   "textdomain": "advance-gb-learning",
   "attributes": {
+    "blockID": {
+			"type": "string",
+			"default": ""
+		},
     "heading": {
+      "type": "string",
+      "default": ""
+    },
+    "description": {
+      "type": "string",
+      "default": ""
+    },
+    "button": {
       "type": "string",
       "default": ""
     }

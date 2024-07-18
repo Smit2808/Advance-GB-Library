@@ -1,27 +1,42 @@
 /**
- * Retrieves the translation of text.
- *
- * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
- */
-import { __ } from '@wordpress/i18n';
-
-/**
  * React hook that is used to mark the block wrapper element.
  * It provides all the necessary props like the class name.
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 
-/**
- * The save function defines the way in which the different attributes should
- * be combined into the final markup, which is then serialized by the block
- * editor into `post_content`.
- *
- * @see https://developer.wordpress.org/block-editor/developers/block-api/block-edit-save/#save
- *
- * @return {WPElement} Element to render.
- */
-export default function save() {
-	return <p {...useBlockProps.save()}>{__('Sample Block', 'advance-gb-learning')}</p>;
+export default function Save( props ) {
+	const { attributes } = props;
+	const { blockID, heading, description, button } = attributes;
+	const classes = 'hero-block';
+	const blockProps = useBlockProps.save( {
+		className: classes,
+		id: blockID,
+	} );
+	return (
+		<div { ...blockProps }>
+			<div className="container">
+				<div className="hero-block__content">
+					<RichText.Content
+						tagName="h1"
+						value={ heading }
+						className="hero-block__heading"
+					/>
+					<RichText.Content
+						tagName="p"
+						value={ description }
+						className="hero-block__description"
+					/>
+					<div className="btn-wrap hero-block__button">
+						<RichText.Content
+							tagName="p"
+							value={ button }
+							className="btn btn-primary"
+						/>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 }
