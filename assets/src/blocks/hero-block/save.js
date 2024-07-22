@@ -9,8 +9,14 @@ import { RichText, useBlockProps } from '@wordpress/block-editor';
 
 export default function Save( props ) {
 	const { attributes } = props;
-	const { blockID, heading, description, button, backgroundImage } =
-		attributes;
+	const {
+		blockID,
+		heading,
+		description,
+		button,
+		backgroundImage,
+		bgPosition,
+	} = attributes;
 	const classes = 'hero-block';
 	const blockProps = useBlockProps.save( {
 		className: classes,
@@ -20,6 +26,7 @@ export default function Save( props ) {
 	backgroundImage &&
 		backgroundImage.url &&
 		( blockStyle.backgroundImage = `url(${ backgroundImage.url })` );
+	bgPosition && ( blockStyle.backgroundPosition = bgPosition );
 	return (
 		<div { ...blockProps } style={ blockStyle }>
 			<div className="container">

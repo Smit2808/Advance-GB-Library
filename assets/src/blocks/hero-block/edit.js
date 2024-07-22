@@ -14,11 +14,20 @@ import {
 import { TabPanel, PanelBody } from '@wordpress/components';
 // eslint-disable-next-line import/no-unresolved
 import MediaUploadComponent from '../../js/custom-components/mediaupload-component';
+import BackgroundPositionComponent from '../../js/custom-components/background-position';
+import BackgroundBlendmodeComponent from '../../js/custom-components/background-blendmode';
 
 export default function Edit( props ) {
 	const { attributes, setAttributes, clientId } = props;
-	const { blockID, heading, description, button, backgroundImage } =
-		attributes;
+	const {
+		blockID,
+		heading,
+		description,
+		button,
+		backgroundImage,
+		bgPosition,
+		bgBlendMode,
+	} = attributes;
 	setAttributes( { blockID: `hero-block-${ clientId }` } );
 	const blockProps = useBlockProps( {
 		className: 'hero-block',
@@ -28,6 +37,8 @@ export default function Edit( props ) {
 	backgroundImage &&
 		backgroundImage.url &&
 		( blockStyle.backgroundImage = `url(${ backgroundImage.url })` );
+	bgPosition && ( blockStyle.backgroundPosition = bgPosition );
+	bgBlendMode && ( blockStyle.backgroundBlendMode = bgBlendMode );
 	return (
 		<>
 			<InspectorControls>
@@ -58,7 +69,7 @@ export default function Edit( props ) {
 								<div>
 									<PanelBody
 										title={ __(
-											'Background Settings',
+											'Background Image',
 											'advance-gb-library'
 										) }
 										initialOpen={ false }
@@ -66,6 +77,16 @@ export default function Edit( props ) {
 										<MediaUploadComponent
 											attributeKey="backgroundImage"
 											attributeValue={ backgroundImage }
+											setAttributes={ setAttributes }
+										/>
+										<BackgroundPositionComponent
+											attributeKey="bgPosition"
+											attributeValue={ bgPosition }
+											setAttributes={ setAttributes }
+										/>
+										<BackgroundBlendmodeComponent
+											attributeKey="bgBlendMode"
+											attributeValue={ bgBlendMode }
 											setAttributes={ setAttributes }
 										/>
 									</PanelBody>

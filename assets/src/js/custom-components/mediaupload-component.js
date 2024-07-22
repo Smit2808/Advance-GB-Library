@@ -8,9 +8,9 @@ const MediaUploadComponent = ( {
 	setAttributes,
 } ) => {
 	return (
-		<div className="setting-row business-hero__bg-upload">
+		<div className="setting-row">
 			<label htmlFor={ `${ attributeKey }-image` }>
-				{ __( 'Background Image', 'anitian' ) }
+				{ __( 'Background Image', 'advance-gb-library' ) }
 			</label>
 			<MediaUploadCheck>
 				<MediaUpload
@@ -40,7 +40,10 @@ const MediaUploadComponent = ( {
 									}
 									onClick={ open }
 								>
-									{ __( 'Select Image', 'anitian' ) }
+									{ __(
+										'Select Image',
+										'advance-gb-library'
+									) }
 								</Button>
 							) : (
 								<>
@@ -54,7 +57,10 @@ const MediaUploadComponent = ( {
 										className={ 'button' }
 										onClick={ open }
 									>
-										{ __( 'Replace Image', 'anitian' ) }
+										{ __(
+											'Replace Image',
+											'advance-gb-library'
+										) }
 									</Button>
 								</>
 							) }
@@ -67,7 +73,7 @@ const MediaUploadComponent = ( {
 					className="is-link is-destructive"
 					onClick={ () => setAttributes( { [ attributeKey ]: {} } ) }
 				>
-					{ __( 'Remove Image', 'anitian' ) }
+					{ __( 'Remove Image', 'advance-gb-library' ) }
 				</Button>
 			) : null }
 		</div>

@@ -30,7 +30,15 @@
     "button": {
       "type": "string",
       "default": ""
-    }
+    },
+    "bgPosition":{
+			"type": "string",
+			"default": ""
+		},
+		"bgBlendMode":{
+			"type": "string",
+			"default": ""
+		}
   },
   "editorScript": "file:./index.js",
   "style": "file:./style-index.css"
