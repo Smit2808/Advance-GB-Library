@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 /**
  * React hook that is used to mark the block wrapper element.
  * It provides all the necessary props like the class name.
@@ -8,14 +9,19 @@ import { RichText, useBlockProps } from '@wordpress/block-editor';
 
 export default function Save( props ) {
 	const { attributes } = props;
-	const { blockID, heading, description, button } = attributes;
+	const { blockID, heading, description, button, backgroundImage } =
+		attributes;
 	const classes = 'hero-block';
 	const blockProps = useBlockProps.save( {
 		className: classes,
 		id: blockID,
 	} );
+	const blockStyle = {};
+	backgroundImage &&
+		backgroundImage.url &&
+		( blockStyle.backgroundImage = `url(${ backgroundImage.url })` );
 	return (
-		<div { ...blockProps }>
+		<div { ...blockProps } style={ blockStyle }>
 			<div className="container">
 				<div className="hero-block__content">
 					<RichText.Content

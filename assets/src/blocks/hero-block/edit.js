@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-nested-ternary */
 /**
  * Retrieves the translation of text.
  *
@@ -9,26 +11,29 @@ import {
 	useBlockProps,
 	InspectorControls,
 } from '@wordpress/block-editor';
-import { TabPanel } from '@wordpress/components';
+import { TabPanel, PanelBody } from '@wordpress/components';
+// eslint-disable-next-line import/no-unresolved
+import MediaUploadComponent from '../../js/custom-components/mediaupload-component';
 
 export default function Edit( props ) {
 	const { attributes, setAttributes, clientId } = props;
-	const { blockID, heading, description, button } = attributes;
+	const { blockID, heading, description, button, backgroundImage } =
+		attributes;
 	setAttributes( { blockID: `hero-block-${ clientId }` } );
 	const blockProps = useBlockProps( {
 		className: 'hero-block',
 		id: blockID,
 	} );
-	const onSelectTab = ( tabName ) => {
-		console.log( 'Selecting tab', tabName );
-	};
+	const blockStyle = {};
+	backgroundImage &&
+		backgroundImage.url &&
+		( blockStyle.backgroundImage = `url(${ backgroundImage.url })` );
 	return (
 		<>
 			<InspectorControls>
 				<TabPanel
 					className="my-tab-panel"
 					activeClass="active-tab"
-					onSelect={ onSelectTab }
 					tabs={ [
 						{
 							name: 'general',
@@ -40,21 +45,41 @@ export default function Edit( props ) {
 							title: 'Design',
 							className: 'design-tab',
 						},
+						{
+							name: 'advance',
+							title: 'Advance',
+							className: 'advance-tab',
+						},
 					] }
 				>
 					{ ( tab ) => (
 						<div className="tab-panel-description-area">
 							{ tab.title === 'General' ? (
-								<div>this is General tab</div>
+								<div>
+									<PanelBody
+										title={ __(
+											'Background Settings',
+											'advance-gb-library'
+										) }
+										initialOpen={ false }
+									>
+										<MediaUploadComponent
+											attributeKey="backgroundImage"
+											attributeValue={ backgroundImage }
+											setAttributes={ setAttributes }
+										/>
+									</PanelBody>
+								</div>
+							) : tab.title === 'Design' ? (
+								<div>this is Design tab</div>
 							) : (
-								<div>this is tab 2</div>
+								<div>this is Advance tab</div>
 							) }
 						</div>
 					) }
-					{ /* { ( tab ) => <p>{ tab.name }</p> } */ }
 				</TabPanel>
 			</InspectorControls>
-			<div { ...blockProps }>
+			<div { ...blockProps } style={ blockStyle }>
 				<div className="container">
 					<div className="hero-block__content">
 						<RichText

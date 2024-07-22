@@ -16,6 +16,9 @@
 			"type": "string",
 			"default": ""
 		},
+    "backgroundImage": {
+			"type": "object"
+		},
     "heading": {
       "type": "string",
       "default": ""
