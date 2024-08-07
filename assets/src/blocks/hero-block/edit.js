@@ -16,6 +16,8 @@ import { TabPanel, PanelBody } from '@wordpress/components';
 import MediaUploadComponent from '../../js/custom-components/mediaupload-component';
 import BackgroundPositionComponent from '../../js/custom-components/background-position';
 import BackgroundBlendmodeComponent from '../../js/custom-components/background-blendmode';
+import ContentAlignmentComponent from '../../js/custom-components/contentalignment-component';
+import TitleTagComponent from '../../js/custom-components/titletag-component';
 
 export default function Edit( props ) {
 	const { attributes, setAttributes, clientId } = props;
@@ -27,6 +29,8 @@ export default function Edit( props ) {
 		backgroundImage,
 		bgPosition,
 		bgBlendMode,
+		contentAlignment,
+		titleTag,
 	} = attributes;
 	setAttributes( { blockID: `hero-block-${ clientId }` } );
 	const blockProps = useBlockProps( {
@@ -87,6 +91,24 @@ export default function Edit( props ) {
 										<BackgroundBlendmodeComponent
 											attributeKey="bgBlendMode"
 											attributeValue={ bgBlendMode }
+											setAttributes={ setAttributes }
+										/>
+									</PanelBody>
+									<PanelBody
+										title={ __(
+											'Content',
+											'advance-gb-library'
+										) }
+										initialOpen={ false }
+									>
+										<ContentAlignmentComponent
+											attributeKey="contentAlignment"
+											attributeValue={ contentAlignment }
+											setAttributes={ setAttributes }
+										/>
+										<TitleTagComponent
+											attributeKey="titleTag"
+											attributeValue={ titleTag }
 											setAttributes={ setAttributes }
 										/>
 									</PanelBody>

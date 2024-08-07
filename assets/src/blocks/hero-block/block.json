@@ -38,7 +38,15 @@
 		"bgBlendMode":{
 			"type": "string",
 			"default": ""
-		}
+		},
+    "contentAlignment":{
+      "type": "string",
+      "default": ""
+    },
+    "titleTag": {
+      "type": "string",
+      "default": ""
+    }
   },
   "editorScript": "file:./index.js",
   "style": "file:./style-index.css"
