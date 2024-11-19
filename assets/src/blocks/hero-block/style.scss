@@ -1,7 +1,81 @@
 @use '../../scss/abstracts';
 
-.wp-block-advance-gb-learning-sample-block {
-    background-color: abstracts.$green-theme-color;
-    color: abstracts.$white-theme-color;
-    padding: 5px 10px;
+.hero-block{
+    padding: 200px 0;
+    background-size: cover;
+    &__content{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+    &__heading{
+        font-weight: 500;
+    }
+    &__description{
+        font-size: 18px;
+        font-weight: 400;
+    }
+    &__button{
+        text-align: center;
+        display: flex;
+        .btn-primary{
+            text-align: center;
+            cursor: pointer;
+            word-break: break-word;
+            -webkit-text-decoration: none;
+            text-decoration: none;
+            position: relative;
+            padding: 10px 20px;
+            margin: 0;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 1.5;
+            background-color: #000;
+            border: 1px solid transparent;
+            color: #fff;
+            border-radius: 50px;
+            transition: color 300ms ease 0ms, background-color 300ms ease 0ms, border 300ms ease 0ms;
+            height: auto;
+        }
+    }
+    &.text-center{
+        .hero-block__heading{
+            text-align: center;
+        }
+        .hero-block__description{
+            text-align: center;
+        }
+        .hero-block__button{
+            justify-content: center;
+        }
+    }
+    &.text-right{
+        .hero-block__heading{
+            text-align: right;
+        }
+        .hero-block__description{
+            text-align: right;
+        }
+        .hero-block__button{
+            justify-content: right;
+        }
+    }
+    h1{
+        font-size: 34px;
+    }
+    h2{
+        font-size: 32px;
+    }
+    h3{
+        font-size: 26px;
+    }
+    h4{
+        font-size: 22px;
+    }
+    h5{
+        font-size: 20px;
+    }
+    h6{
+        font-size: 18px;
+    }
 }

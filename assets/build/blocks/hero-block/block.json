@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "title": "Hero Block",
   "category": "advance-gb-learning",
-  "icon": "lock",
+  "icon": "format-image",
   "description": "This is a static Hero Block which has elements and design related settings.",
   "keywords": [
     "Hero",
@@ -44,11 +44,43 @@
     },
     "contentAlignment": {
       "type": "string",
-      "default": ""
+      "default": "left"
     },
     "titleTag": {
       "type": "string",
-      "default": ""
+      "default": "H1"
+    },
+    "showHeading": {
+      "type": "boolean",
+      "default": true
+    },
+    "showDesc": {
+      "type": "boolean",
+      "default": true
+    },
+    "showBtn": {
+      "type": "boolean",
+      "default": true
+    },
+    "headingColor": {
+      "type": "string",
+      "default": "#000"
+    },
+    "btnColor": {
+      "type": "string",
+      "default": "#fff"
+    },
+    "btnBgColor": {
+      "type": "string",
+      "default": "#000"
+    },
+    "contentColor": {
+      "type": "string",
+      "default": "#000"
+    },
+    "bgColor": {
+      "type": "string",
+      "default": "#fff"
     }
   },
   "editorScript": "file:./index.js",

@@ -1,6 +1,5 @@
-// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
-import { __experimentalAlignmentMatrixControl as AlignmentMatrixControl } from '@wordpress/components';
-import { __ } from '@wordpress/i18n'; // Add this line
+import { __ } from '@wordpress/i18n';
+import { Dashicon } from '@wordpress/components';
 
 const ContentAlignmentComponent = ( {
 	attributeKey = 'contentAlignment',
@@ -12,14 +11,44 @@ const ContentAlignmentComponent = ( {
 			<label htmlFor={ `${ attributeKey }-image` }>
 				{ __( 'Content Position', 'advance-gb-library' ) }
 			</label>
-			<AlignmentMatrixControl
-				value={ attributeValue }
-				onChange={ ( value ) =>
-					setAttributes( {
-						[ attributeKey ]: value,
-					} )
-				}
-			/>
+			<div className="inspector-field-button-list inspector-field-button-list-fluid">
+				<button
+					className={ `inspector-button ${
+						'left' === attributeValue ? 'active' : ''
+					}` }
+					onClick={ () =>
+						setAttributes( {
+							[ attributeKey ]: 'left',
+						} )
+					}
+				>
+					<Dashicon icon="align-pull-left" />
+				</button>
+				<button
+					className={ `inspector-button ${
+						'center' === attributeValue ? 'active' : ''
+					}` }
+					onClick={ () =>
+						setAttributes( {
+							[ attributeKey ]: 'center',
+						} )
+					}
+				>
+					<Dashicon icon="align-wide" />
+				</button>
+				<button
+					className={ `inspector-button ${
+						'right' === attributeValue ? 'active' : ''
+					}` }
+					onClick={ () =>
+						setAttributes( {
+							[ attributeKey ]: 'right',
+						} )
+					}
+				>
+					<Dashicon icon="align-pull-right" />
+				</button>
+			</div>
 		</div>
 	);
 };

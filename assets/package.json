@@ -17,7 +17,7 @@
 		"wordpress",
 		"themes"
 	],
-	"author": "Multidots",
+	"author": "Smit",
 	"license": "MIT",
 	"private": true,
 	"devDependencies": {
@@ -34,5 +34,8 @@
 		"postcss-preset-env": "^9.3.0",
 		"postcss-sort-media-queries": "^5.2.0",
 		"slugify": "^1.6.5"
+	},
+	"dependencies": {
+		"classnames": "^2.5.1"
 	}
 }

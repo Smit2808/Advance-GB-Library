@@ -1,53 +1,88 @@
 {
-  "$schema": "https://schemas.wp.org/trunk/block.json",
-  "name": "advance-gb-learning/hero-block",
-  "version": "0.1.0",
-  "title": "Hero Block",
-  "category": "advance-gb-learning",
-  "icon": "lock",
-  "description": "This is a static Hero Block which has elements and design related settings.",
-  "keywords": ["Hero", "Block"],
-  "supports": {
-    "html": false
-  },
-  "textdomain": "advance-gb-learning",
-  "attributes": {
-    "blockID": {
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"name": "advance-gb-learning/hero-block",
+	"version": "0.1.0",
+	"title": "Hero Block",
+	"category": "advance-gb-learning",
+	"icon": "format-image",
+	"description": "This is a static Hero Block which has elements and design related settings.",
+	"keywords": [
+		"Hero",
+		"Block"
+	],
+	"supports": {
+		"html": false
+	},
+	"textdomain": "advance-gb-learning",
+	"attributes": {
+		"blockID": {
 			"type": "string",
 			"default": ""
 		},
-    "backgroundImage": {
+		"backgroundImage": {
 			"type": "object"
 		},
-    "heading": {
-      "type": "string",
-      "default": ""
-    },
-    "description": {
-      "type": "string",
-      "default": ""
-    },
-    "button": {
-      "type": "string",
-      "default": ""
-    },
-    "bgPosition":{
+		"heading": {
 			"type": "string",
 			"default": ""
 		},
-		"bgBlendMode":{
+		"description": {
 			"type": "string",
 			"default": ""
 		},
-    "contentAlignment":{
-      "type": "string",
-      "default": ""
-    },
-    "titleTag": {
-      "type": "string",
-      "default": ""
-    }
-  },
-  "editorScript": "file:./index.js",
-  "style": "file:./style-index.css"
+		"button": {
+			"type": "string",
+			"default": ""
+		},
+		"bgPosition": {
+			"type": "string",
+			"default": ""
+		},
+		"bgBlendMode": {
+			"type": "string",
+			"default": ""
+		},
+		"contentAlignment": {
+			"type": "string",
+			"default": "left"
+		},
+		"titleTag": {
+			"type": "string",
+			"default": "H1"
+		},
+		"showHeading": {
+			"type": "boolean",
+			"default": true
+		},
+		"showDesc": {
+			"type": "boolean",
+			"default": true
+		},
+		"showBtn": {
+			"type": "boolean",
+			"default": true
+		},
+		"headingColor": {
+			"type": "string",
+			"default": "#000"
+		},
+		"btnColor": {
+			"type": "string",
+			"default": "#fff"
+		},
+		"btnBgColor": {
+			"type": "string",
+			"default": "#000"
+		},
+		"contentColor": {
+			"type": "string",
+			"default": "#000"
+		},
+		"bgColor": {
+			"type": "string",
+			"default": "#fff"
+		}
+	},
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css"
 }

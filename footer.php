@@ -9,7 +9,7 @@
 
 	<footer id="colophon" class="site-footer u-bg-gray  u-flex u-justify-content-center u-padding-a30">
 		<div class="site-info u-primary-text-color">
-			<a class="u-link-text-color" href="<?php echo esc_url( __( 'https://www.multidots.com/', 'advance-gb-learning' ) ); ?>">
+			<a class="u-link-text-color" href="<?php echo esc_url( __( '#', 'advance-gb-learning' ) ); ?>">
 				<?php
 				/* translators: %s: CMS name, i.e. WordPress. */
 				printf( esc_html__( 'Proudly powered by %s', 'advance-gb-learning' ), 'WordPress' );
@@ -18,7 +18,7 @@
 			<span class="sep"> | </span>
 				<?php
 				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'advance-gb-learning' ), 'Multidots', '<a class="u-link-text-color" href="htts://www.multidots.com/">multidots.com</a>' );
+				printf( esc_html__( 'Theme: %1$s by %2$s.', 'advance-gb-learning' ), 'Advance GB Learning', '<a class="u-link-text-color" href="https://profiles.wordpress.org/smit08/">Smit</a>' );
 				?>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->

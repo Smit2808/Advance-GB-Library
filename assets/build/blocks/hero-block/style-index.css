@@ -1,0 +1,81 @@
+/*!*********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/blocks/hero-block/style.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************************/
+.hero-block {
+  padding: 200px 0;
+  background-size: cover;
+}
+.hero-block__content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.hero-block__heading {
+  font-weight: 500;
+}
+.hero-block__description {
+  font-size: 18px;
+  font-weight: 400;
+}
+.hero-block__button {
+  text-align: center;
+  display: flex;
+}
+.hero-block__button .btn-primary {
+  text-align: center;
+  cursor: pointer;
+  word-break: break-word;
+  -webkit-text-decoration: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  position: relative;
+  padding: 10px 20px;
+  margin: 0;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.5;
+  background-color: #000;
+  border: 1px solid transparent;
+  color: #fff;
+  border-radius: 50px;
+  transition: color 300ms ease 0ms, background-color 300ms ease 0ms, border 300ms ease 0ms;
+  height: auto;
+}
+.hero-block.text-center .hero-block__heading {
+  text-align: center;
+}
+.hero-block.text-center .hero-block__description {
+  text-align: center;
+}
+.hero-block.text-center .hero-block__button {
+  justify-content: center;
+}
+.hero-block.text-right .hero-block__heading {
+  text-align: right;
+}
+.hero-block.text-right .hero-block__description {
+  text-align: right;
+}
+.hero-block.text-right .hero-block__button {
+  justify-content: right;
+}
+.hero-block h1 {
+  font-size: 34px;
+}
+.hero-block h2 {
+  font-size: 32px;
+}
+.hero-block h3 {
+  font-size: 26px;
+}
+.hero-block h4 {
+  font-size: 22px;
+}
+.hero-block h5 {
+  font-size: 20px;
+}
+.hero-block h6 {
+  font-size: 18px;
+}
+
+/*# sourceMappingURL=style-index.css.map*/
