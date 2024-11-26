@@ -1,0 +1,55 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "name": "advance-gb-learning/team-members-block",
+  "version": "0.1.0",
+  "title": "Team Members Block",
+  "apiVersion": 3,
+  "category": "advance-gb-learning",
+  "icon": "groups",
+  "description": "This block is used to display the team members in the grid layout. There are different styling and elements options.",
+  "keywords": [
+    "Team",
+    "Members"
+  ],
+  "supports": {
+    "html": false
+  },
+  "textdomain": "advance-gb-learning",
+  "attributes": {
+    "blockID": {
+      "type": "string",
+      "default": ""
+    },
+    "bgColor": {
+      "type": "string",
+      "default": "#0b2c56"
+    },
+    "headingColor": {
+      "type": "string",
+      "default": "#fff"
+    },
+    "descriptionColor": {
+      "type": "string",
+      "default": "#fff"
+    },
+    "showHeading": {
+      "type": "boolean",
+      "default": true
+    },
+    "showImage": {
+      "type": "boolean",
+      "default": true
+    },
+    "cardItems": {
+      "type": "array",
+      "default": []
+    },
+    "showDescription": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "editorScript": "file:./index.js",
+  "style": "file:./style-index.css",
+  "editorStyle": "file:./index.css"
+}
