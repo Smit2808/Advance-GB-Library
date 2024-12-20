@@ -1,60 +1,21 @@
 /*!*****************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/blocks/team-members-block/style.scss ***!
   \*****************************************************************************************************************************************************************************************************************************************************************/
-.cards-section {
-  padding: 80px 0;
-  background-color: #0b2c56;
-}
-.cards-section .cards-wrapper {
+.team-members-section .team-members-wrapper {
+  justify-content: flex-start;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  padding: 10px 0;
+  margin: 0 -10px;
 }
-.cards-section .cards-wrapper .card-wrapper {
-  width: 47%;
-  margin: 30px 0;
+.team-members-section .team-member-wrapper {
+  width: 50%;
+  padding: 0 10px;
 }
-.cards-section .cards-wrapper .card-wrapper .card-image-wrapper {
-  margin-bottom: 20px;
+.team-members-section.has-three-columns .team-member-wrapper {
+  width: 31%;
 }
-.cards-section .cards-wrapper .card-wrapper .card-image-wrapper img {
+.team-members-section .team-member-image-wrapper img {
   width: 100%;
   height: auto;
-  width: auto;
-  max-width: 100%;
-}
-.cards-section .cards-wrapper .card-wrapper .card-content-wrapper h3 {
-  font-size: 28px;
-  font-weight: 500;
-  color: #ffffff;
-  line-height: 1.4em;
-  margin: 0 0 20px;
-}
-.cards-section .cards-wrapper .card-wrapper .card-content-wrapper .description {
-  font-size: 18px;
-  color: #ffffff;
-  padding: 0;
-  margin-bottom: 20px;
-}
-.cards-section .cards-wrapper .card-wrapper .card-content-wrapper .btn-main {
-  width: -moz-fit-content;
-  width: fit-content;
-}
-@media (max-width: 991px) {
-  .cards-section {
-    padding: 60px 0;
-  }
-  .cards-section .cards-wrapper .card-wrapper .card-image-wrapper img {
-    max-width: 600px;
-    width: 100%;
-  }
-  .cards-section .cards-wrapper .card-wrapper {
-    width: 100%;
-    margin: 20px 0;
-  }
-}
-@media (max-width: 767px) {
-  .cards-section {
-    padding: 40px 0;
-  }
 }

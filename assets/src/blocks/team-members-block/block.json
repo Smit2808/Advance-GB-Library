@@ -24,15 +24,15 @@
 			"type": "string",
 			"default": "#0b2c56"
 		},
-		"headingColor": {
+		"teamMemberNameColor": {
 			"type": "string",
 			"default": "#fff"
 		},
-		"descriptionColor": {
+		"teamMemberDescriptionColor": {
 			"type": "string",
 			"default": "#fff"
 		},
-		"showHeading": {
+		"showTeamMemberName": {
 			"type": "boolean",
 			"default": true
 		},
@@ -40,13 +40,21 @@
 			"type": "boolean",
 			"default": true
 		},
-		"cardItems": {
+		"teamMemberItems": {
 			"type": "array",
 			"default": []
 		},
-		"showDescription": {
+		"showTeamMemberDescription": {
 			"type": "boolean",
 			"default": true
+		},
+		"contentAlignment": {
+			"type": "string",
+			"default": "left"
+		},
+		"columns": {
+			"type": "number",
+			"default": 2
 		}
 	},
 	"editorScript": "file:./index.js",

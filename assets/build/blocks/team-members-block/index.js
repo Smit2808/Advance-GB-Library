@@ -25,9 +25,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./editor.scss */ "./src/blocks/team-members-block/editor.scss");
+/* harmony import */ var _js_custom_components_contentalignment_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../js/custom-components/contentalignment-component */ "./src/js/custom-components/contentalignment-component.js");
 
 /* eslint-disable no-shadow */
 /* eslint-disable no-unused-expressions */
+
 
 
 
@@ -44,12 +46,14 @@ function Edit(props) {
   const {
     blockID,
     bgColor,
-    headingColor,
-    descriptionColor,
-    showHeading,
+    teamMemberNameColor,
+    teamMemberDescriptionColor,
+    showTeamMemberName,
     showImage,
-    showDescription,
-    cardItems
+    showTeamMemberDescription,
+    teamMemberItems,
+    contentAlignment,
+    columns
   } = attributes;
   if (!blockID) {
     setAttributes({
@@ -59,18 +63,21 @@ function Edit(props) {
   const blockStyle = {};
   bgColor && (blockStyle.backgroundColor = bgColor);
   const headingStyle = {};
-  headingColor && (headingStyle.color = headingColor);
+  teamMemberNameColor && (headingStyle.color = teamMemberNameColor);
   const descStyle = {};
-  descriptionColor && (descStyle.color = descriptionColor);
-  const classes = classnames__WEBPACK_IMPORTED_MODULE_5___default()(className, 'team-members-section');
+  teamMemberDescriptionColor && (descStyle.color = teamMemberDescriptionColor);
+  const teamMemberContentStyle = {};
+  contentAlignment && (teamMemberContentStyle.textAlign = contentAlignment);
+  const columnClass = 2 === columns ? 'has-two-columns' : 'has-three-columns';
+  const classes = classnames__WEBPACK_IMPORTED_MODULE_5___default()(className, 'team-members-section', columnClass);
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)({
     className: classes,
     id: blockID
   });
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useEffect)(() => {
-    if (0 === cardItems.length) {
+    if (0 === teamMemberItems.length) {
       setAttributes({
-        cardItems: [{
+        teamMemberItems: [{
           title: '',
           description: '',
           imageID: '',
@@ -84,17 +91,17 @@ function Edit(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const moveItem = (oldIndex, newIndex) => {
-    const arrayCopy = [...cardItems];
-    arrayCopy[oldIndex] = cardItems[newIndex];
-    arrayCopy[newIndex] = cardItems[oldIndex];
+    const arrayCopy = [...teamMemberItems];
+    arrayCopy[oldIndex] = teamMemberItems[newIndex];
+    arrayCopy[newIndex] = teamMemberItems[oldIndex];
     setAttributes({
-      cardItems: arrayCopy
+      teamMemberItems: arrayCopy
     });
   };
   const addNewItem = () => {
-    let itemsArr = cardItems;
-    const newObject = [...cardItems, {
-      index: cardItems.length,
+    let itemsArr = teamMemberItems;
+    const newObject = [...teamMemberItems, {
+      index: teamMemberItems.length,
       title: '',
       description: '',
       imageID: '',
@@ -105,10 +112,10 @@ function Edit(props) {
     }];
     itemsArr = newObject;
     setAttributes({
-      cardItems: itemsArr
+      teamMemberItems: itemsArr
     });
   };
-  const teamMemberDivs = cardItems.map((cardItem, index) => {
+  const teamMemberDivs = teamMemberItems.map((teamMemberItem, index) => {
     return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "team-member-wrapper",
       key: index
@@ -117,20 +124,20 @@ function Edit(props) {
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "move-item"
     }, 0 < index && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Tooltip, {
-      text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Move Up', 'advance-gb-learning')
+      text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Move Left', 'advance-gb-learning')
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
       className: "dashicons dashicons-arrow-left-alt",
       "aria-hidden": "true",
       onClick: () => moveItem(index, index - 1)
-    })), index + 1 < cardItems.length && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Tooltip, {
-      text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Move Down', 'advance-gb-learning')
+    })), index + 1 < teamMemberItems.length && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Tooltip, {
+      text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Move Right', 'advance-gb-learning')
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
       onKeyUp: () => {},
       role: "button",
       tabIndex: 0,
       className: "dashicons dashicons-arrow-right-alt",
       onClick: () => moveItem(index, index + 1)
-    }))), 1 < cardItems.length && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Tooltip, {
+    }))), 1 < teamMemberItems.length && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Tooltip, {
       text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Remove Item', 'advance-gb-learning')
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
       onKeyUp: () => {},
@@ -142,10 +149,10 @@ function Edit(props) {
         // eslint-disable-next-line no-alert
         confirm((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Are you sure you want to delete this item?'));
         if (true === toDelete) {
-          const arrayCopy = [...cardItems];
+          const arrayCopy = [...teamMemberItems];
           arrayCopy.splice(index, 1);
           setAttributes({
-            cardItems: arrayCopy
+            teamMemberItems: arrayCopy
           });
         }
       }
@@ -154,23 +161,23 @@ function Edit(props) {
     }, showImage && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "team-member-image-wrapper"
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "vitria-block-control image-preview image-controle-visible-hover"
-    }, cardItem.imageURL && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "advance-gb-learning-block-control image-preview image-controle-visible-hover"
+    }, teamMemberItem.imageURL && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: `image-controls small-icons icon-bottom-left-fixed`
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.MediaUploadCheck, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.MediaUpload, {
       onSelect: item => {
-        const arrayCopy = [...cardItems];
+        const arrayCopy = [...teamMemberItems];
         arrayCopy[index].imageID = item.id;
         arrayCopy[index].imageURL = item.url;
         arrayCopy[index].imageAlt = item.alt;
         arrayCopy[index].imageWidth = item.width;
         arrayCopy[index].imageHeight = item.height;
         setAttributes({
-          cardItems: arrayCopy
+          teamMemberItems: arrayCopy
         });
       },
       allowedTypes: ['image'],
-      value: cardItem.imageID,
+      value: teamMemberItem.imageID,
       render: ({
         open
       }) => {
@@ -192,35 +199,35 @@ function Edit(props) {
       tabIndex: 0,
       className: "dashicons dashicons-no-alt remove-image",
       onClick: () => {
-        const arrayCopy = [...cardItems];
+        const arrayCopy = [...teamMemberItems];
         arrayCopy[index].imageID = '';
         arrayCopy[index].imageURL = '';
         arrayCopy[index].imageAlt = '';
         arrayCopy[index].imageWidth = '';
         arrayCopy[index].imageHeight = '';
         setAttributes({
-          cardItems: arrayCopy
+          teamMemberItems: arrayCopy
         });
       }
-    }))), cardItem.imageURL && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-      width: cardItem.imageWidth,
-      height: cardItem.imageHeight,
-      src: cardItem.imageURL,
-      alt: cardItem.imageAlt
-    })), !cardItem.imageURL && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.MediaUploadCheck, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.MediaUpload, {
+    }))), teamMemberItem.imageURL && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      width: teamMemberItem.imageWidth,
+      height: teamMemberItem.imageHeight,
+      src: teamMemberItem.imageURL,
+      alt: teamMemberItem.imageAlt
+    })), !teamMemberItem.imageURL && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.MediaUploadCheck, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.MediaUpload, {
       onSelect: item => {
-        const arrayCopy = [...cardItems];
+        const arrayCopy = [...teamMemberItems];
         arrayCopy[index].imageID = item.id;
         arrayCopy[index].imageURL = item.url;
         arrayCopy[index].imageAlt = item.alt;
         arrayCopy[index].imageWidth = item.width;
         arrayCopy[index].imageHeight = item.height;
         setAttributes({
-          cardItems: arrayCopy
+          teamMemberItems: arrayCopy
         });
       },
       allowedTypes: ['image'],
-      value: cardItem.imageURL,
+      value: teamMemberItem.imageURL,
       render: ({
         open
       }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -234,30 +241,31 @@ function Edit(props) {
         className: "dashicons dashicons-upload"
       }))))
     }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "team-member-content-wrapper"
-    }, showHeading && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, {
+      className: "team-member-content-wrapper",
+      style: teamMemberContentStyle
+    }, showTeamMemberName && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, {
       tagName: "h3",
-      placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Enter Title', 'advance-gb-learning'),
-      className: "title",
-      value: cardItem.title,
+      placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Enter Team Member Name', 'advance-gb-learning'),
+      className: "team-member-name",
+      value: teamMemberItem.title,
       onChange: value => {
-        const arrayCopy = [...cardItems];
+        const arrayCopy = [...teamMemberItems];
         arrayCopy[index].title = value;
         setAttributes({
-          cardItems: arrayCopy
+          teamMemberItems: arrayCopy
         });
       },
       style: headingStyle
-    }), showDescription && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, {
+    }), showTeamMemberDescription && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, {
       tagName: "p",
-      placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Enter Description', 'advance-gb-learning'),
-      className: "description",
-      value: cardItem.description,
+      placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Enter Team Member Description', 'advance-gb-learning'),
+      className: "team-member-description",
+      value: teamMemberItem.description,
       onChange: value => {
-        const arrayCopy = [...cardItems];
+        const arrayCopy = [...teamMemberItems];
         arrayCopy[index].description = value;
         setAttributes({
-          cardItems: arrayCopy
+          teamMemberItems: arrayCopy
         });
       },
       style: descStyle
@@ -285,24 +293,38 @@ function Edit(props) {
     className: "tab-panel-description-area"
   }, tab.name === 'general' ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Settings', 'advance-gb-learning')
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Image', 'advance-gb-learning'),
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RangeControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Columns', 'advance-gb-learning'),
+    value: columns,
+    onChange: value => {
+      setAttributes({
+        columns: value
+      });
+    },
+    min: 2,
+    max: 3
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Team Member Image', 'advance-gb-learning'),
     checked: showImage,
     onChange: showImage => setAttributes({
       showImage
     })
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Heading', 'advance-gb-learning'),
-    checked: showHeading,
-    onChange: showHeading => setAttributes({
-      showHeading
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Team Member Name', 'advance-gb-learning'),
+    checked: showTeamMemberName,
+    onChange: showTeamMemberName => setAttributes({
+      showTeamMemberName
     })
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Description', 'advance-gb-learning'),
-    checked: showDescription,
-    onChange: showDescription => setAttributes({
-      showDescription
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Team Member Description', 'advance-gb-learning'),
+    checked: showTeamMemberDescription,
+    onChange: showTeamMemberDescription => setAttributes({
+      showTeamMemberDescription
     })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_js_custom_components_contentalignment_component__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    attributeKey: "contentAlignment",
+    attributeValue: contentAlignment,
+    setAttributes: setAttributes
   }))) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Color Settings', 'advance-gb-learning'),
     initialOpen: false
@@ -316,21 +338,21 @@ function Edit(props) {
       },
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Background Color', 'advance-gb-learning')
     }, {
-      value: headingColor,
+      value: teamMemberNameColor,
       onChange: value => {
         setAttributes({
-          headingColor: value === undefined ? '' : value
+          teamMemberNameColor: value === undefined ? '' : value
         });
       },
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Heading Color', 'advance-gb-learning')
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Team Member Name Color', 'advance-gb-learning')
     }, {
-      value: descriptionColor,
+      value: teamMemberDescriptionColor,
       onChange: value => {
         setAttributes({
-          descriptionColor: value === undefined ? '' : value
+          teamMemberDescriptionColor: value === undefined ? '' : value
         });
       },
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Description Color', 'advance-gb-learning')
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Team Member Description Color', 'advance-gb-learning')
     }]
   }))))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps,
@@ -339,7 +361,7 @@ function Edit(props) {
     className: "container"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "team-members-wrapper"
-  }, teamMemberDivs, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, teamMemberDivs), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     onKeyUp: () => {},
     role: "button",
     tabIndex: 0,
@@ -352,7 +374,7 @@ function Edit(props) {
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
     className: "add-new-item dashicons dashicons-plus",
     "aria-hidden": "true"
-  })))))));
+  }))))));
 }
 
 /***/ }),
@@ -433,20 +455,25 @@ function save(props) {
   const {
     blockID,
     bgColor,
-    headingColor,
-    descriptionColor,
-    showHeading,
+    teamMemberNameColor,
+    teamMemberDescriptionColor,
+    showTeamMemberName,
     showImage,
-    showDescription,
-    cardItems
+    showTeamMemberDescription,
+    teamMemberItems,
+    contentAlignment,
+    columns
   } = attributes;
   const blockStyle = {};
   bgColor && (blockStyle.backgroundColor = bgColor);
   const headingStyle = {};
-  headingColor && (headingStyle.color = headingColor);
+  teamMemberNameColor && (headingStyle.color = teamMemberNameColor);
   const descStyle = {};
-  descriptionColor && (descStyle.color = descriptionColor);
-  const classes = classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, 'cards-section');
+  teamMemberDescriptionColor && (descStyle.color = teamMemberDescriptionColor);
+  const teamMemberContentStyle = {};
+  contentAlignment && (teamMemberContentStyle.textAlign = contentAlignment);
+  const columnClass = 2 === columns ? 'has-two-columns' : 'has-three-columns';
+  const classes = classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, 'team-members-section', columnClass);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
       className: classes,
@@ -456,38 +483,94 @@ function save(props) {
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "container"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "cards-wrapper"
-  }, cardItems.map((cardItem, index) => {
+    className: "team-members-wrapper"
+  }, teamMemberItems.map((teamMemberItem, index) => {
     return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "card-wrapper",
-      key: index,
-      "data-aos": "zoom-in",
-      "data-aos-duration": "1000",
-      "data-aos-offset": "100"
+      className: "team-member-wrapper",
+      key: index
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "card-inner-wrapper"
+      className: "team-member-inner-wrapper"
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "card-image-wrapper"
-    }, cardItem.imageURL && showImage && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-      width: cardItem.imageWidth,
-      height: cardItem.imageHeight,
-      src: cardItem.imageURL,
-      alt: cardItem.imageAlt
+      className: "team-member-image-wrapper"
+    }, teamMemberItem.imageURL && showImage && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      width: teamMemberItem.imageWidth,
+      height: teamMemberItem.imageHeight,
+      src: teamMemberItem.imageURL,
+      alt: teamMemberItem.imageAlt
     })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "card-content-wrapper"
-    }, showHeading && cardItem.title && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+      className: "team-member-content-wrapper",
+      style: teamMemberContentStyle
+    }, showTeamMemberName && teamMemberItem.title && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
       tagName: "h3",
-      className: "title",
-      value: cardItem.title,
+      className: "team-member-name",
+      value: teamMemberItem.title,
       style: headingStyle
-    }), showDescription && cardItem.description && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+    }), showTeamMemberDescription && teamMemberItem.description && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
       tagName: "p",
-      className: "description",
-      value: cardItem.description,
+      className: "team-member-description",
+      value: teamMemberItem.description,
       style: descStyle
     }))));
   }))));
 }
+
+/***/ }),
+
+/***/ "./src/js/custom-components/contentalignment-component.js":
+/*!****************************************************************!*\
+  !*** ./src/js/custom-components/contentalignment-component.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+const ContentAlignmentComponent = ({
+  attributeKey = 'contentAlignment',
+  attributeValue = {},
+  setAttributes
+}) => {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "setting-row"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+    htmlFor: `${attributeKey}-image`
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Content Position', 'advance-gb-library')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "inspector-field-button-list inspector-field-button-list-fluid"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: `inspector-button ${'left' === attributeValue ? 'active' : ''}`,
+    onClick: () => setAttributes({
+      [attributeKey]: 'left'
+    })
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Dashicon, {
+    icon: "align-pull-left"
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: `inspector-button ${'center' === attributeValue ? 'active' : ''}`,
+    onClick: () => setAttributes({
+      [attributeKey]: 'center'
+    })
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Dashicon, {
+    icon: "align-wide"
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: `inspector-button ${'right' === attributeValue ? 'active' : ''}`,
+    onClick: () => setAttributes({
+      [attributeKey]: 'right'
+    })
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Dashicon, {
+    icon: "align-pull-right"
+  }))));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ContentAlignmentComponent);
 
 /***/ }),
 
@@ -676,7 +759,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 /***/ ((module) => {
 
 "use strict";
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","name":"advance-gb-learning/team-members-block","version":"0.1.0","title":"Team Members Block","apiVersion":3,"category":"advance-gb-learning","icon":"groups","description":"This block is used to display the team members in the grid layout. There are different styling and elements options.","keywords":["Team","Members"],"supports":{"html":false},"textdomain":"advance-gb-learning","attributes":{"blockID":{"type":"string","default":""},"bgColor":{"type":"string","default":"#0b2c56"},"headingColor":{"type":"string","default":"#fff"},"descriptionColor":{"type":"string","default":"#fff"},"showHeading":{"type":"boolean","default":true},"showImage":{"type":"boolean","default":true},"cardItems":{"type":"array","default":[]},"showDescription":{"type":"boolean","default":true}},"editorScript":"file:./index.js","style":"file:./style-index.css","editorStyle":"file:./index.css"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","name":"advance-gb-learning/team-members-block","version":"0.1.0","title":"Team Members Block","apiVersion":3,"category":"advance-gb-learning","icon":"groups","description":"This block is used to display the team members in the grid layout. There are different styling and elements options.","keywords":["Team","Members"],"supports":{"html":false},"textdomain":"advance-gb-learning","attributes":{"blockID":{"type":"string","default":""},"bgColor":{"type":"string","default":"#0b2c56"},"teamMemberNameColor":{"type":"string","default":"#fff"},"teamMemberDescriptionColor":{"type":"string","default":"#fff"},"showTeamMemberName":{"type":"boolean","default":true},"showImage":{"type":"boolean","default":true},"teamMemberItems":{"type":"array","default":[]},"showTeamMemberDescription":{"type":"boolean","default":true},"contentAlignment":{"type":"string","default":"left"},"columns":{"type":"number","default":2}},"editorScript":"file:./index.js","style":"file:./style-index.css","editorStyle":"file:./index.css"}');
 
 /***/ })
 

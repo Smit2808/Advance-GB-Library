@@ -7,24 +7,35 @@ export default function save( props ) {
 	const {
 		blockID,
 		bgColor,
-		headingColor,
-		descriptionColor,
-		showHeading,
+		teamMemberNameColor,
+		teamMemberDescriptionColor,
+		showTeamMemberName,
 		showImage,
-		showDescription,
-		cardItems,
+		showTeamMemberDescription,
+		teamMemberItems,
+		contentAlignment,
+		columns,
 	} = attributes;
 
 	const blockStyle = {};
 	bgColor && ( blockStyle.backgroundColor = bgColor );
 
 	const headingStyle = {};
-	headingColor && ( headingStyle.color = headingColor );
+	teamMemberNameColor && ( headingStyle.color = teamMemberNameColor );
 
 	const descStyle = {};
-	descriptionColor && ( descStyle.color = descriptionColor );
+	teamMemberDescriptionColor &&
+		( descStyle.color = teamMemberDescriptionColor );
 
-	const classes = classnames( className, 'cards-section' );
+	const teamMemberContentStyle = {};
+	contentAlignment && ( teamMemberContentStyle.textAlign = contentAlignment );
+
+	const columnClass = 2 === columns ? 'has-two-columns' : 'has-three-columns';
+	const classes = classnames(
+		className,
+		'team-members-section',
+		columnClass
+	);
 
 	return (
 		<div
@@ -35,43 +46,52 @@ export default function save( props ) {
 			} ) }
 		>
 			<div className="container">
-				<div className="cards-wrapper">
-					{ cardItems.map( ( cardItem, index ) => {
+				<div className="team-members-wrapper">
+					{ teamMemberItems.map( ( teamMemberItem, index ) => {
 						return (
-							<div
-								className="card-wrapper"
-								key={ index }
-								data-aos="zoom-in"
-								data-aos-duration="1000"
-								data-aos-offset="100"
-							>
-								<div className="card-inner-wrapper">
-									<div className="card-image-wrapper">
-										{ cardItem.imageURL && showImage && (
-											<img
-												width={ cardItem.imageWidth }
-												height={ cardItem.imageHeight }
-												src={ cardItem.imageURL }
-												alt={ cardItem.imageAlt }
-											/>
-										) }
+							<div className="team-member-wrapper" key={ index }>
+								<div className="team-member-inner-wrapper">
+									<div className="team-member-image-wrapper">
+										{ teamMemberItem.imageURL &&
+											showImage && (
+												<img
+													width={
+														teamMemberItem.imageWidth
+													}
+													height={
+														teamMemberItem.imageHeight
+													}
+													src={
+														teamMemberItem.imageURL
+													}
+													alt={
+														teamMemberItem.imageAlt
+													}
+												/>
+											) }
 									</div>
-									<div className="card-content-wrapper">
-										{ showHeading && cardItem.title && (
-											<RichText.Content
-												tagName="h3"
-												className="title"
-												value={ cardItem.title }
-												style={ headingStyle }
-											/>
-										) }
-										{ showDescription &&
-											cardItem.description && (
+									<div
+										className="team-member-content-wrapper"
+										style={ teamMemberContentStyle }
+									>
+										{ showTeamMemberName &&
+											teamMemberItem.title && (
+												<RichText.Content
+													tagName="h3"
+													className="team-member-name"
+													value={
+														teamMemberItem.title
+													}
+													style={ headingStyle }
+												/>
+											) }
+										{ showTeamMemberDescription &&
+											teamMemberItem.description && (
 												<RichText.Content
 													tagName="p"
-													className="description"
+													className="team-member-description"
 													value={
-														cardItem.description
+														teamMemberItem.description
 													}
 													style={ descStyle }
 												/>

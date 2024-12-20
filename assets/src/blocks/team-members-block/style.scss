@@ -1,58 +1,26 @@
 @import "../../scss/abstracts/breakpoints";
 
-.cards-section{
-    padding: 80px 0;
-    background-color: #0b2c56;
-    @include media-breakpoint(max-991) {
-        padding: 60px 0;
-    }
-    @include media-breakpoint(max-767) {
-        padding: 40px 0;
-    }
-    .cards-wrapper{
+.team-members-section{
+    .team-members-wrapper{
+        justify-content: flex-start;
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
-        // row-gap: 90px;
-        // column-gap: 60px;
-        .card-wrapper{
-            width: 47%;
-            margin: 30px 0;
-            .card-image-wrapper{
-                margin-bottom: 20px;
-                img{
-                    width: 100%;
-                    height: auto;
-                    width: auto;
-                    max-width: 100%;
-                    @include media-breakpoint(max-991) {
-                        max-width: 600px;
-                        width: 100%;
-                    }
-                }
-            }
-            .card-content-wrapper{
-                h3{
-                    font-size: 28px;
-                    font-weight: 500;
-                    color: #ffffff;
-                    line-height: 1.4em;
-                    margin: 0 0 20px;
-                }
-                .description{
-                    font-size: 18px;
-                    color: #ffffff;
-                    padding: 0;
-                    margin-bottom: 20px;
-                }
-                .btn-main{
-                    width: fit-content;
-                }
-            }
-            @include media-breakpoint(max-991) {
-                width: 100%;
-                margin: 20px 0;
-            }
+        padding: 10px 0;
+        margin: 0 -10px;
+    }
+    .team-member-wrapper{
+        width: 50%;
+        padding: 0 10px;
+    }
+    &.has-three-columns{
+        .team-member-wrapper{
+            width: 31%;
+        }
+    }
+    .team-member-image-wrapper{
+        img{
+            width: 100%;
+            height: auto;
         }
     }
 }

@@ -9,6 +9,7 @@ import {
 	Dashicon,
 	Tooltip,
 	Button,
+	RangeControl,
 } from '@wordpress/components';
 
 import {
@@ -23,17 +24,21 @@ import { useEffect } from '@wordpress/element';
 import classnames from 'classnames';
 import './editor.scss';
 
+import ContentAlignmentComponent from '../../js/custom-components/contentalignment-component';
+
 export default function Edit( props ) {
 	const { attributes, setAttributes, className, clientId } = props;
 	const {
 		blockID,
 		bgColor,
-		headingColor,
-		descriptionColor,
-		showHeading,
+		teamMemberNameColor,
+		teamMemberDescriptionColor,
+		showTeamMemberName,
 		showImage,
-		showDescription,
-		cardItems,
+		showTeamMemberDescription,
+		teamMemberItems,
+		contentAlignment,
+		columns,
 	} = attributes;
 
 	if ( ! blockID ) {
@@ -46,21 +51,30 @@ export default function Edit( props ) {
 	bgColor && ( blockStyle.backgroundColor = bgColor );
 
 	const headingStyle = {};
-	headingColor && ( headingStyle.color = headingColor );
+	teamMemberNameColor && ( headingStyle.color = teamMemberNameColor );
 
 	const descStyle = {};
-	descriptionColor && ( descStyle.color = descriptionColor );
+	teamMemberDescriptionColor &&
+		( descStyle.color = teamMemberDescriptionColor );
 
-	const classes = classnames( className, 'team-members-section' );
+	const teamMemberContentStyle = {};
+	contentAlignment && ( teamMemberContentStyle.textAlign = contentAlignment );
+
+	const columnClass = 2 === columns ? 'has-two-columns' : 'has-three-columns';
+	const classes = classnames(
+		className,
+		'team-members-section',
+		columnClass
+	);
 	const blockProps = useBlockProps( {
 		className: classes,
 		id: blockID,
 	} );
 
 	useEffect( () => {
-		if ( 0 === cardItems.length ) {
+		if ( 0 === teamMemberItems.length ) {
 			setAttributes( {
-				cardItems: [
+				teamMemberItems: [
 					{
 						title: '',
 						description: '',
@@ -77,19 +91,19 @@ export default function Edit( props ) {
 	}, [] );
 
 	const moveItem = ( oldIndex, newIndex ) => {
-		const arrayCopy = [ ...cardItems ];
-		arrayCopy[ oldIndex ] = cardItems[ newIndex ];
-		arrayCopy[ newIndex ] = cardItems[ oldIndex ];
+		const arrayCopy = [ ...teamMemberItems ];
+		arrayCopy[ oldIndex ] = teamMemberItems[ newIndex ];
+		arrayCopy[ newIndex ] = teamMemberItems[ oldIndex ];
 
-		setAttributes( { cardItems: arrayCopy } );
+		setAttributes( { teamMemberItems: arrayCopy } );
 	};
 
 	const addNewItem = () => {
-		let itemsArr = cardItems;
+		let itemsArr = teamMemberItems;
 		const newObject = [
-			...cardItems,
+			...teamMemberItems,
 			{
-				index: cardItems.length,
+				index: teamMemberItems.length,
 				title: '',
 				description: '',
 				imageID: '',
@@ -101,18 +115,21 @@ export default function Edit( props ) {
 		];
 		itemsArr = newObject;
 		setAttributes( {
-			cardItems: itemsArr,
+			teamMemberItems: itemsArr,
 		} );
 	};
 
-	const teamMemberDivs = cardItems.map( ( cardItem, index ) => {
+	const teamMemberDivs = teamMemberItems.map( ( teamMemberItem, index ) => {
 		return (
 			<div className="team-member-wrapper" key={ index }>
 				<div className={ `item-action-wrap` }>
 					<div className="move-item">
 						{ 0 < index && (
 							<Tooltip
-								text={ __( 'Move Up', 'advance-gb-learning' ) }
+								text={ __(
+									'Move Left',
+									'advance-gb-learning'
+								) }
 							>
 								<span
 									className="dashicons dashicons-arrow-left-alt"
@@ -123,10 +140,10 @@ export default function Edit( props ) {
 								></span>
 							</Tooltip>
 						) }
-						{ index + 1 < cardItems.length && (
+						{ index + 1 < teamMemberItems.length && (
 							<Tooltip
 								text={ __(
-									'Move Down',
+									'Move Right',
 									'advance-gb-learning'
 								) }
 							>
@@ -142,7 +159,7 @@ export default function Edit( props ) {
 							</Tooltip>
 						) }
 					</div>
-					{ 1 < cardItems.length && (
+					{ 1 < teamMemberItems.length && (
 						<Tooltip
 							text={ __( 'Remove Item', 'advance-gb-learning' ) }
 						>
@@ -160,10 +177,12 @@ export default function Edit( props ) {
 											)
 										);
 									if ( true === toDelete ) {
-										const arrayCopy = [ ...cardItems ];
+										const arrayCopy = [
+											...teamMemberItems,
+										];
 										arrayCopy.splice( index, 1 );
 										setAttributes( {
-											cardItems: arrayCopy,
+											teamMemberItems: arrayCopy,
 										} );
 									}
 								} }
@@ -174,8 +193,8 @@ export default function Edit( props ) {
 				<div className="team-member-inner-wrapper">
 					{ showImage && (
 						<div className="team-member-image-wrapper">
-							<div className="vitria-block-control image-preview image-controle-visible-hover">
-								{ cardItem.imageURL && (
+							<div className="advance-gb-learning-block-control image-preview image-controle-visible-hover">
+								{ teamMemberItem.imageURL && (
 									<div
 										className={ `image-controls small-icons icon-bottom-left-fixed` }
 									>
@@ -183,7 +202,7 @@ export default function Edit( props ) {
 											<MediaUpload
 												onSelect={ ( item ) => {
 													const arrayCopy = [
-														...cardItems,
+														...teamMemberItems,
 													];
 													arrayCopy[ index ].imageID =
 														item.id;
@@ -200,11 +219,12 @@ export default function Edit( props ) {
 														index
 													].imageHeight = item.height;
 													setAttributes( {
-														cardItems: arrayCopy,
+														teamMemberItems:
+															arrayCopy,
 													} );
 												} }
 												allowedTypes={ [ 'image' ] }
-												value={ cardItem.imageID }
+												value={ teamMemberItem.imageID }
 												render={ ( { open } ) => {
 													return (
 														<Tooltip
@@ -238,7 +258,7 @@ export default function Edit( props ) {
 												className="dashicons dashicons-no-alt remove-image"
 												onClick={ () => {
 													const arrayCopy = [
-														...cardItems,
+														...teamMemberItems,
 													];
 													arrayCopy[ index ].imageID =
 														'';
@@ -255,27 +275,30 @@ export default function Edit( props ) {
 														index
 													].imageHeight = '';
 													setAttributes( {
-														cardItems: arrayCopy,
+														teamMemberItems:
+															arrayCopy,
 													} );
 												} }
 											></i>
 										</Tooltip>
 									</div>
 								) }
-								{ cardItem.imageURL && (
+								{ teamMemberItem.imageURL && (
 									<img
-										width={ cardItem.imageWidth }
-										height={ cardItem.imageHeight }
-										src={ cardItem.imageURL }
-										alt={ cardItem.imageAlt }
+										width={ teamMemberItem.imageWidth }
+										height={ teamMemberItem.imageHeight }
+										src={ teamMemberItem.imageURL }
+										alt={ teamMemberItem.imageAlt }
 									/>
 								) }
 							</div>
-							{ ! cardItem.imageURL && (
+							{ ! teamMemberItem.imageURL && (
 								<MediaUploadCheck>
 									<MediaUpload
 										onSelect={ ( item ) => {
-											const arrayCopy = [ ...cardItems ];
+											const arrayCopy = [
+												...teamMemberItems,
+											];
 											arrayCopy[ index ].imageID =
 												item.id;
 											arrayCopy[ index ].imageURL =
@@ -287,11 +310,11 @@ export default function Edit( props ) {
 											arrayCopy[ index ].imageHeight =
 												item.height;
 											setAttributes( {
-												cardItems: arrayCopy,
+												teamMemberItems: arrayCopy,
 											} );
 										} }
 										allowedTypes={ [ 'image' ] }
-										value={ cardItem.imageURL }
+										value={ teamMemberItem.imageURL }
 										render={ ( { open } ) => (
 											<div className="upload-wrap">
 												<Tooltip
@@ -314,40 +337,43 @@ export default function Edit( props ) {
 							) }
 						</div>
 					) }
-					<div className="team-member-content-wrapper">
-						{ showHeading && (
+					<div
+						className="team-member-content-wrapper"
+						style={ teamMemberContentStyle }
+					>
+						{ showTeamMemberName && (
 							<RichText
 								tagName="h3"
 								placeholder={ __(
-									'Enter Title',
+									'Enter Team Member Name',
 									'advance-gb-learning'
 								) }
-								className="title"
-								value={ cardItem.title }
+								className="team-member-name"
+								value={ teamMemberItem.title }
 								onChange={ ( value ) => {
-									const arrayCopy = [ ...cardItems ];
+									const arrayCopy = [ ...teamMemberItems ];
 									arrayCopy[ index ].title = value;
 									setAttributes( {
-										cardItems: arrayCopy,
+										teamMemberItems: arrayCopy,
 									} );
 								} }
 								style={ headingStyle }
 							/>
 						) }
-						{ showDescription && (
+						{ showTeamMemberDescription && (
 							<RichText
 								tagName="p"
 								placeholder={ __(
-									'Enter Description',
+									'Enter Team Member Description',
 									'advance-gb-learning'
 								) }
-								className="description"
-								value={ cardItem.description }
+								className="team-member-description"
+								value={ teamMemberItem.description }
 								onChange={ ( value ) => {
-									const arrayCopy = [ ...cardItems ];
+									const arrayCopy = [ ...teamMemberItems ];
 									arrayCopy[ index ].description = value;
 									setAttributes( {
-										cardItems: arrayCopy,
+										teamMemberItems: arrayCopy,
 									} );
 								} }
 								style={ descStyle }
@@ -398,9 +424,23 @@ export default function Edit( props ) {
 												'advance-gb-learning'
 											) }
 										>
+											<RangeControl
+												label={ __(
+													'Columns',
+													'advance-gb-learning'
+												) }
+												value={ columns }
+												onChange={ ( value ) => {
+													setAttributes( {
+														columns: value,
+													} );
+												} }
+												min={ 2 }
+												max={ 3 }
+											/>
 											<ToggleControl
 												label={ __(
-													'Show Image',
+													'Show Team Member Image',
 													'advance-gb-learning'
 												) }
 												checked={ showImage }
@@ -412,29 +452,40 @@ export default function Edit( props ) {
 											/>
 											<ToggleControl
 												label={ __(
-													'Show Heading',
+													'Show Team Member Name',
 													'advance-gb-learning'
 												) }
-												checked={ showHeading }
-												onChange={ ( showHeading ) =>
+												checked={ showTeamMemberName }
+												onChange={ (
+													showTeamMemberName
+												) =>
 													setAttributes( {
-														showHeading,
+														showTeamMemberName,
 													} )
 												}
 											/>
 											<ToggleControl
 												label={ __(
-													'Show Description',
+													'Show Team Member Description',
 													'advance-gb-learning'
 												) }
-												checked={ showDescription }
+												checked={
+													showTeamMemberDescription
+												}
 												onChange={ (
-													showDescription
+													showTeamMemberDescription
 												) =>
 													setAttributes( {
-														showDescription,
+														showTeamMemberDescription,
 													} )
 												}
+											/>
+											<ContentAlignmentComponent
+												attributeKey="contentAlignment"
+												attributeValue={
+													contentAlignment
+												}
+												setAttributes={ setAttributes }
 											/>
 										</PanelBody>
 									</>
@@ -466,10 +517,10 @@ export default function Edit( props ) {
 														),
 													},
 													{
-														value: headingColor,
+														value: teamMemberNameColor,
 														onChange: ( value ) => {
 															setAttributes( {
-																headingColor:
+																teamMemberNameColor:
 																	value ===
 																	undefined
 																		? ''
@@ -477,15 +528,15 @@ export default function Edit( props ) {
 															} );
 														},
 														label: __(
-															'Heading Color',
+															'Team Member Name Color',
 															'advance-gb-learning'
 														),
 													},
 													{
-														value: descriptionColor,
+														value: teamMemberDescriptionColor,
 														onChange: ( value ) => {
 															setAttributes( {
-																descriptionColor:
+																teamMemberDescriptionColor:
 																	value ===
 																	undefined
 																		? ''
@@ -493,7 +544,7 @@ export default function Edit( props ) {
 															} );
 														},
 														label: __(
-															'Description Color',
+															'Team Member Description Color',
 															'advance-gb-learning'
 														),
 													},
@@ -511,27 +562,24 @@ export default function Edit( props ) {
 				<div className="container">
 					<div className="team-members-wrapper">
 						{ teamMemberDivs }
-						<div
-							onKeyUp={ () => {} }
-							role="button"
-							tabIndex={ 0 }
-							className="add-item-wrap"
-							onClick={ () => {
-								addNewItem();
-							} }
+					</div>
+					<div
+						onKeyUp={ () => {} }
+						role="button"
+						tabIndex={ 0 }
+						className="add-item-wrap"
+						onClick={ () => {
+							addNewItem();
+						} }
+					>
+						<Tooltip
+							text={ __( 'Add New Item', 'advance-gb-learning' ) }
 						>
-							<Tooltip
-								text={ __(
-									'Add New Item',
-									'advance-gb-learning'
-								) }
-							>
-								<i
-									className="add-new-item dashicons dashicons-plus"
-									aria-hidden="true"
-								></i>
-							</Tooltip>
-						</div>
+							<i
+								className="add-new-item dashicons dashicons-plus"
+								aria-hidden="true"
+							></i>
+						</Tooltip>
 					</div>
 				</div>
 			</div>
