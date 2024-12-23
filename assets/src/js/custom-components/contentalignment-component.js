@@ -1,15 +1,15 @@
-import { __ } from '@wordpress/i18n';
 import { Dashicon } from '@wordpress/components';
 
 const ContentAlignmentComponent = ( {
 	attributeKey = 'contentAlignment',
 	attributeValue = {},
 	setAttributes,
+	componentLabel,
 } ) => {
 	return (
 		<div className="setting-row">
 			<label htmlFor={ `${ attributeKey }-image` }>
-				{ __( 'Content Position', 'advance-gb-library' ) }
+				{ componentLabel ? componentLabel : 'Content alignment' }
 			</label>
 			<div className="inspector-field-button-list inspector-field-button-list-fluid">
 				<button

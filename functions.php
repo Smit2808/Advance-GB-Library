@@ -29,6 +29,10 @@ if ( ! defined( 'ADVANCE_GB_LEARNING_SRC_BLOCK_DIR_PATH' ) ) {
 	define( 'ADVANCE_GB_LEARNING_SRC_BLOCK_DIR_PATH', get_template_directory() . '/assets/build/blocks' );
 }
 
+if ( ! defined( 'ADVANCE_GB_LEARNING_ASSETS_LIBRARY_PATH' ) ) {
+	define( 'ADVANCE_GB_LEARNING_ASSETS_LIBRARY_PATH', untrailingslashit( get_template_directory_uri() ) . '/assets/library' );
+}
+
 /**
  * Load up the class autoloader.
  */

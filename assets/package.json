@@ -36,6 +36,8 @@
 		"slugify": "^1.6.5"
 	},
 	"dependencies": {
-		"classnames": "^2.5.1"
+		"classnames": "^2.5.1",
+		"react-slick": "^0.30.3",
+		"slick-carousel": "^1.8.1"
 	}
 }

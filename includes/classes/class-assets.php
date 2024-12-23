@@ -118,6 +118,14 @@ class Assets {
 		// Enqueue Styles.
 		wp_enqueue_style( 'main-css' );
 
+		wp_enqueue_style(
+			'advance-gb-slick-css',
+			ADVANCE_GB_LEARNING_ASSETS_LIBRARY_PATH . '/css/slick.css',
+			array(),
+			ADVANCE_GB_LEARNING_THEME_VERSION,
+			'all'
+		);
+
 	}
 
 	/**
@@ -127,6 +135,15 @@ class Assets {
 	 * @since 1.0.0
 	 */
 	public function register_scripts() {
+
+		wp_enqueue_script(
+			'advance-gb-slick-js',
+			ADVANCE_GB_LEARNING_ASSETS_LIBRARY_PATH . '/js/slick.min.js',
+			array( 'jquery-core' ),
+			ADVANCE_GB_LEARNING_THEME_VERSION,
+			true
+		);
+
 		// Register scripts.
 		wp_register_script( 'main-js', ADVANCE_GB_LEARNING_BUILD_URI . '/main.js', array( 'jquery' ), filemtime( ADVANCE_GB_LEARNING_BUILD_PATH . '/main.js' ), true );
 
@@ -161,6 +178,22 @@ class Assets {
 				'all'
 			);
 		}
+
+		wp_enqueue_style(
+			'advance-gb-learning-slick-css',
+			ADVANCE_GB_LEARNING_ASSETS_LIBRARY_PATH . '/css/slick.css',
+			array(),
+			ADVANCE_GB_LEARNING_THEME_VERSION,
+			'all'
+		);
+
+		wp_enqueue_script(
+			'advance-gb-learning-slick-js',
+			ADVANCE_GB_LEARNING_ASSETS_LIBRARY_PATH . '/js/slick.min.js',
+			array( 'jquery-core' ),
+			ADVANCE_GB_LEARNING_THEME_VERSION,
+			true
+		);
 
 		// Change block Priority to head.
 		$blocks = \WP_Block_Type_Registry::get_instance()->get_all_registered();

@@ -1,0 +1,97 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "name": "advance-gb-learning/slider-block",
+  "version": "0.1.0",
+  "title": "Slider Block",
+  "apiVersion": 3,
+  "category": "advance-gb-learning",
+  "icon": "slides",
+  "description": "This is a slider block it dispalys the items into slider layout. There are different slider and styling options.",
+  "keywords": [
+    "Slider"
+  ],
+  "supports": {
+    "html": false
+  },
+  "textdomain": "advance-gb-learning",
+  "attributes": {
+    "blockID": {
+      "type": "string",
+      "default": ""
+    },
+    "mainHeading": {
+      "type": "string",
+      "default": ""
+    },
+    "showMainHeading": {
+      "type": "boolean",
+      "default": true
+    },
+    "mainHeadingColor": {
+      "type": "string",
+      "default": "#fff"
+    },
+    "bgColor": {
+      "type": "string",
+      "default": "#0b2c56"
+    },
+    "titleColor": {
+      "type": "string",
+      "default": "#fff"
+    },
+    "descriptionColor": {
+      "type": "string",
+      "default": "#fff"
+    },
+    "showTitle": {
+      "type": "boolean",
+      "default": true
+    },
+    "showImage": {
+      "type": "boolean",
+      "default": true
+    },
+    "sliderItems": {
+      "type": "array",
+      "default": []
+    },
+    "showDescription": {
+      "type": "boolean",
+      "default": true
+    },
+    "contentAlignment": {
+      "type": "string",
+      "default": "left"
+    },
+    "autoplay": {
+      "type": "boolean",
+      "default": true
+    },
+    "arrows": {
+      "type": "boolean",
+      "default": true
+    },
+    "dots": {
+      "type": "boolean",
+      "default": true
+    },
+    "loopSlide": {
+      "type": "boolean",
+      "default": true
+    },
+    "mainHeadingContentAlignment": {
+      "type": "string",
+      "default": "left"
+    },
+    "titleTag": {
+      "type": "string",
+      "default": "H1"
+    }
+  },
+  "editorScript": "file:./index.js",
+  "style": "file:./style-index.css",
+  "editorStyle": "file:./index.css",
+  "viewScript": [
+    "file:./view.js"
+  ]
+}
