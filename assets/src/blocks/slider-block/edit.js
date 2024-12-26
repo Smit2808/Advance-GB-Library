@@ -39,6 +39,7 @@ export default function Edit( props ) {
 		mainHeading,
 		showMainHeading,
 		bgColor,
+		contentBgColor,
 		titleColor,
 		mainHeadingColor,
 		descriptionColor,
@@ -78,8 +79,9 @@ export default function Edit( props ) {
 	const descStyle = {};
 	descriptionColor && ( descStyle.color = descriptionColor );
 
-	const teamMemberContentStyle = {};
-	contentAlignment && ( teamMemberContentStyle.textAlign = contentAlignment );
+	const contentStyle = {};
+	contentAlignment && ( contentStyle.textAlign = contentAlignment );
+	contentBgColor && ( contentStyle.backgroundColor = contentBgColor );
 
 	const classes = classnames( className, 'slider-section' );
 	const blockProps = useBlockProps( {
@@ -347,10 +349,7 @@ export default function Edit( props ) {
 						) }
 					</div>
 				) }
-				<div
-					className="content-wrapper"
-					style={ teamMemberContentStyle }
-				>
+				<div className="content-wrapper" style={ contentStyle }>
 					{ showTitle && (
 						<RichText
 							tagName="h3"
@@ -602,6 +601,22 @@ export default function Edit( props ) {
 														},
 														label: __(
 															'Main Heading Color',
+															'advance-gb-learning'
+														),
+													},
+													{
+														value: contentBgColor,
+														onChange: ( value ) => {
+															setAttributes( {
+																contentBgColor:
+																	value ===
+																	undefined
+																		? ''
+																		: value,
+															} );
+														},
+														label: __(
+															'Content Background Color',
 															'advance-gb-learning'
 														),
 													},

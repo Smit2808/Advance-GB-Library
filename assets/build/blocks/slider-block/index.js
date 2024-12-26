@@ -57,6 +57,7 @@ function Edit(props) {
     mainHeading,
     showMainHeading,
     bgColor,
+    contentBgColor,
     titleColor,
     mainHeadingColor,
     descriptionColor,
@@ -89,8 +90,9 @@ function Edit(props) {
   titleColor && (headingStyle.color = titleColor);
   const descStyle = {};
   descriptionColor && (descStyle.color = descriptionColor);
-  const teamMemberContentStyle = {};
-  contentAlignment && (teamMemberContentStyle.textAlign = contentAlignment);
+  const contentStyle = {};
+  contentAlignment && (contentStyle.textAlign = contentAlignment);
+  contentBgColor && (contentStyle.backgroundColor = contentBgColor);
   const classes = classnames__WEBPACK_IMPORTED_MODULE_5___default()(className, 'slider-section');
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)({
     className: classes,
@@ -275,7 +277,7 @@ function Edit(props) {
       }))))
     }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "content-wrapper",
-      style: teamMemberContentStyle
+      style: contentStyle
     }, showTitle && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, {
       tagName: "h3",
       placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Enter Title', 'advance-gb-learning'),
@@ -412,6 +414,14 @@ function Edit(props) {
       },
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Main Heading Color', 'advance-gb-learning')
     }, {
+      value: contentBgColor,
+      onChange: value => {
+        setAttributes({
+          contentBgColor: value === undefined ? '' : value
+        });
+      },
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Content Background Color', 'advance-gb-learning')
+    }, {
       value: titleColor,
       onChange: value => {
         setAttributes({
@@ -544,6 +554,7 @@ function save(props) {
     mainHeading,
     showMainHeading,
     bgColor,
+    contentBgColor,
     titleColor,
     descriptionColor,
     showTitle,
@@ -568,8 +579,9 @@ function save(props) {
   titleColor && (headingStyle.color = titleColor);
   const descStyle = {};
   descriptionColor && (descStyle.color = descriptionColor);
-  const teamMemberContentStyle = {};
-  contentAlignment && (teamMemberContentStyle.textAlign = contentAlignment);
+  const contentStyle = {};
+  contentAlignment && (contentStyle.textAlign = contentAlignment);
+  contentBgColor && (contentStyle.backgroundColor = contentBgColor);
   const classes = classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, 'slider-section');
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
@@ -605,7 +617,7 @@ function save(props) {
       alt: sliderItem.imageAlt
     })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "content-wrapper",
-      style: teamMemberContentStyle
+      style: contentStyle
     }, showTitle && sliderItem.title && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
       tagName: "h3",
       className: "content-wrapper__title",
@@ -5075,7 +5087,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 /***/ ((module) => {
 
 "use strict";
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","name":"advance-gb-learning/slider-block","version":"0.1.0","title":"Slider Block","apiVersion":3,"category":"advance-gb-learning","icon":"slides","description":"This is a slider block it dispalys the items into slider layout. There are different slider and styling options.","keywords":["Slider"],"supports":{"html":false},"textdomain":"advance-gb-learning","attributes":{"blockID":{"type":"string","default":""},"mainHeading":{"type":"string","default":""},"showMainHeading":{"type":"boolean","default":true},"mainHeadingColor":{"type":"string","default":"#fff"},"bgColor":{"type":"string","default":"#0b2c56"},"titleColor":{"type":"string","default":"#fff"},"descriptionColor":{"type":"string","default":"#fff"},"showTitle":{"type":"boolean","default":true},"showImage":{"type":"boolean","default":true},"sliderItems":{"type":"array","default":[]},"showDescription":{"type":"boolean","default":true},"contentAlignment":{"type":"string","default":"left"},"autoplay":{"type":"boolean","default":true},"arrows":{"type":"boolean","default":true},"dots":{"type":"boolean","default":true},"loopSlide":{"type":"boolean","default":true},"mainHeadingContentAlignment":{"type":"string","default":"left"},"titleTag":{"type":"string","default":"H1"}},"editorScript":"file:./index.js","style":"file:./style-index.css","editorStyle":"file:./index.css","viewScript":["file:./view.js"]}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","name":"advance-gb-learning/slider-block","version":"0.1.0","title":"Slider Block","apiVersion":3,"category":"advance-gb-learning","icon":"slides","description":"This is a slider block it dispalys the items into slider layout. There are different slider and styling options.","keywords":["Slider"],"supports":{"html":false},"textdomain":"advance-gb-learning","attributes":{"blockID":{"type":"string","default":""},"mainHeading":{"type":"string","default":""},"showMainHeading":{"type":"boolean","default":true},"mainHeadingColor":{"type":"string","default":"#000"},"bgColor":{"type":"string","default":"#fff"},"contentBgColor":{"type":"string","default":"#fff"},"titleColor":{"type":"string","default":"#000"},"descriptionColor":{"type":"string","default":"#000"},"showTitle":{"type":"boolean","default":true},"showImage":{"type":"boolean","default":true},"sliderItems":{"type":"array","default":[]},"showDescription":{"type":"boolean","default":true},"contentAlignment":{"type":"string","default":"left"},"autoplay":{"type":"boolean","default":true},"arrows":{"type":"boolean","default":true},"dots":{"type":"boolean","default":true},"loopSlide":{"type":"boolean","default":true},"mainHeadingContentAlignment":{"type":"string","default":"left"},"titleTag":{"type":"string","default":"H1"}},"editorScript":"file:./index.js","style":"file:./style-index.css","editorStyle":"file:./index.css","viewScript":["file:./view.js"]}');
 
 /***/ })
 

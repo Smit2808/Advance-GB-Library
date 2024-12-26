@@ -29,19 +29,23 @@
 		},
 		"mainHeadingColor": {
 			"type": "string",
-			"default": "#fff"
+			"default": "#000"
 		},
 		"bgColor": {
 			"type": "string",
-			"default": "#0b2c56"
+			"default": "#fff"
+		},
+		"contentBgColor": {
+			"type": "string",
+			"default": "#fff"
 		},
 		"titleColor": {
 			"type": "string",
-			"default": "#fff"
+			"default": "#000"
 		},
 		"descriptionColor": {
 			"type": "string",
-			"default": "#fff"
+			"default": "#000"
 		},
 		"showTitle": {
 			"type": "boolean",

@@ -9,6 +9,7 @@ export default function save( props ) {
 		mainHeading,
 		showMainHeading,
 		bgColor,
+		contentBgColor,
 		titleColor,
 		descriptionColor,
 		showTitle,
@@ -39,8 +40,9 @@ export default function save( props ) {
 	const descStyle = {};
 	descriptionColor && ( descStyle.color = descriptionColor );
 
-	const teamMemberContentStyle = {};
-	contentAlignment && ( teamMemberContentStyle.textAlign = contentAlignment );
+	const contentStyle = {};
+	contentAlignment && ( contentStyle.textAlign = contentAlignment );
+	contentBgColor && ( contentStyle.backgroundColor = contentBgColor );
 	const classes = classnames( className, 'slider-section' );
 
 	return (
@@ -88,7 +90,7 @@ export default function save( props ) {
 									</div>
 									<div
 										className="content-wrapper"
-										style={ teamMemberContentStyle }
+										style={ contentStyle }
 									>
 										{ showTitle && sliderItem.title && (
 											<RichText.Content

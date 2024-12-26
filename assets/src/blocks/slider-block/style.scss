@@ -1,1 +1,132 @@
 @import "../../scss/abstracts/breakpoints";
+
+.slider-section{ 
+    padding: 100px 0;
+    &__main-heading{
+        margin-bottom: 30px;
+    } 
+    h1{
+        font-size: 34px;
+    }
+    h2{
+        font-size: 32px;
+    }
+    h3{
+        font-size: 26px;
+    }
+    h4{
+        font-size: 22px;
+    }
+    h5{
+        font-size: 20px;
+    }
+    h6{
+        font-size: 18px;
+    }
+    .slick-track{
+        display: flex;
+    }
+    .slick-slide{
+        margin: 0 20px;
+    }
+    &__slide-item{
+        display: flex;
+        align-self: stretch;
+        .image-wrapper{
+            img{
+                width: 100%;
+                height: auto;
+            }
+        }
+        .content-wrapper{
+            padding: 15px;
+            h3{
+                font-size: 19px;
+                font-weight: 400;
+                margin: 0 0 20px 0;
+            }
+            p{
+                font-size: 16px;
+                font-weight: 300;
+            }
+        }
+    }
+    .slider-section__slider-main {
+        position: relative;
+        .slick-arrow {
+            width: 40px;
+            height: 40px;
+            font-size: 0;
+            background: transparent;
+            cursor: pointer;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            position: absolute;
+            display: block;
+            &:before {
+                width: 16px;
+                height: 16px;
+                content: "";
+                display: block;
+                position: absolute;
+                top: 11px;
+                @include media-breakpoint(max-480){
+                    width: 13px;
+                    height: 13px;
+                }
+            }
+        }
+        .slick-prev {
+            left: -40px;
+            z-index: 1;
+            &:before {
+                border-top: 3px solid #666;
+                border-left: 3px solid #666;
+                transform: rotate(-45deg);
+            }
+            @include media-breakpoint(max-767){
+                left: -5px;
+            }
+        }
+        .slick-next {
+            right: -50px;
+            &:before {
+                border-top: 3px solid #666;
+                border-left: 3px solid #666;
+                transform: rotate(135deg);
+            }
+            @include media-breakpoint(max-767){
+                right: -15px;
+            }
+        }
+        .slick-dots {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            margin: 40px auto 10px;
+            li {
+                font-size: 0;
+                background: #666;
+                height: 5px;
+                width: 5px;
+                padding: 5px;
+                border: none;
+                border-radius: 50%;
+                cursor: pointer;
+                Button {
+                    font-size: 0;
+                    padding: 0;
+                    background: transparent;
+                    border: none;
+                    display: none;
+                }
+                &.slick-active {
+                    background: #f75227;
+                }
+            }
+        }
+    }
+}

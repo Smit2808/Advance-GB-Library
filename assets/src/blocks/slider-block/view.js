@@ -31,6 +31,20 @@
 				swipeToSlide: true,
 				touchMove: false,
 				draggable: false,
+				responsive: [
+					{
+						breakpoint: 767,
+						settings: {
+							slidesToShow: 2,
+						},
+					},
+					{
+						breakpoint: 480,
+						settings: {
+							slidesToShow: 1,
+						},
+					},
+				],
 			};
 
 			if ( cardSliderWrp[ index ] ) {

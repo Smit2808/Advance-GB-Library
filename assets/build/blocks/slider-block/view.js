@@ -33,7 +33,18 @@
         slidesToScroll: 1,
         swipeToSlide: true,
         touchMove: false,
-        draggable: false
+        draggable: false,
+        responsive: [{
+          breakpoint: 767,
+          settings: {
+            slidesToShow: 2
+          }
+        }, {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1
+          }
+        }]
       };
       if (cardSliderWrp[index]) {
         cardSliderWrp[index].slick('refresh');
