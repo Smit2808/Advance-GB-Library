@@ -1,0 +1,90 @@
+@use "../../scss/abstracts";
+
+.media-and-content {
+	padding: 100px 0;
+	@include abstracts.media-breakpoint(max-991) {
+		padding: 80px 0;
+	}
+	@include abstracts.media-breakpoint(max-767) {
+		padding: 50px 0;
+	}
+	&__wrapper {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		&.img-align-right {
+			flex-direction: row-reverse;
+			@include abstracts.media-breakpoint(max-767) {
+				flex-direction: column;
+			}
+		}
+		@include abstracts.media-breakpoint(max-767) {
+			flex-direction: column;
+		}
+		&.img-size-medium {
+			.media-and-content__media-wrapper {
+				max-width: 350px;
+			}
+		}
+		&.img-size-small {
+			.media-and-content__media-wrapper {
+				max-width: 260px;
+			}
+		}
+	}
+	&__media-wrapper {
+		width: 48%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 0 auto 30px;
+		img {
+			width: 100%;
+			height: auto;
+			transition: .4s ease-in-out;
+			&:hover {
+				transition: .4s ease-in-out;
+				transform: scale(1.05);
+			}
+			@include abstracts.media-breakpoint(max-767) {
+				max-width: 600px;
+				margin: auto;
+			}
+		}
+		@include abstracts.media-breakpoint(max-767) {
+			width: 100%;
+		}
+	}
+	&__content-wrapper {
+		width: 48%;
+		p,
+		ul {
+			margin: 0;
+			padding-bottom: 20px;
+		}
+		p,
+		ul,
+		li{
+			color: inherit;
+		}
+		a {
+			color: black;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+		ul {
+			padding-left: 20px;
+			li {
+				padding-left: 0px;
+				line-height: 1.5;
+				&:not(:last-child) {
+					margin-bottom: 10px;
+				}
+			}
+		}
+		@include abstracts.media-breakpoint(max-767) {
+			width: 100%;
+		}
+	}
+}

@@ -513,14 +513,14 @@ export default function Edit( props ) {
 										<PanelBody
 											title={ __(
 												'Slider Settings',
-												'vitria'
+												'advance-gb-library'
 											) }
 											initialOpen={ false }
 										>
 											<ToggleControl
 												label={ __(
 													'Autoplay',
-													'vitria'
+													'advance-gb-library'
 												) }
 												checked={ autoplay }
 												onChange={ ( value ) =>
@@ -532,7 +532,7 @@ export default function Edit( props ) {
 											<ToggleControl
 												label={ __(
 													'Arrows',
-													'vitria'
+													'advance-gb-library'
 												) }
 												checked={ arrows }
 												onChange={ ( value ) =>
@@ -542,7 +542,10 @@ export default function Edit( props ) {
 												}
 											/>
 											<ToggleControl
-												label={ __( 'Dots', 'vitria' ) }
+												label={ __(
+													'Dots',
+													'advance-gb-library'
+												) }
 												checked={ dots }
 												onChange={ ( value ) =>
 													setAttributes( {
@@ -551,7 +554,10 @@ export default function Edit( props ) {
 												}
 											/>
 											<ToggleControl
-												label={ __( 'Loop', 'vitria' ) }
+												label={ __(
+													'Loop',
+													'advance-gb-library'
+												) }
 												checked={ loopSlide }
 												onChange={ ( value ) =>
 													setAttributes( {
