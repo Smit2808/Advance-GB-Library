@@ -37,7 +37,9 @@
 	},
 	"dependencies": {
 		"classnames": "^2.5.1",
+		"react-select": "^5.9.0",
 		"react-slick": "^0.30.3",
+		"react-sortable-hoc": "^2.0.0",
 		"slick-carousel": "^1.8.1"
 	}
 }
