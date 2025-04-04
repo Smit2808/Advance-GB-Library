@@ -50,11 +50,11 @@
 		},
 		"contentAlignment": {
 			"type": "string",
-			"default": "left"
+			"default": "center"
 		},
 		"columns": {
 			"type": "number",
-			"default": 2
+			"default": 3
 		}
 	},
 	"editorScript": "file:./index.js",

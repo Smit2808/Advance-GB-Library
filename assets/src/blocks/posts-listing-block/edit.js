@@ -81,6 +81,8 @@ export default function Edit( props ) {
 		contentBgColor,
 		btnBgColor,
 		btnTextColor,
+		displayPostContent,
+		postContentColor,
 	} = attributes;
 
 	const [ pageList, setpageList ] = useState( [] );
@@ -393,6 +395,20 @@ export default function Edit( props ) {
 											) }
 											<ToggleControl
 												label={ __(
+													'Show Post Content',
+													'advance-gb-learning'
+												) }
+												checked={ displayPostContent }
+												onChange={ (
+													displayPostContent
+												) =>
+													setAttributes( {
+														displayPostContent,
+													} )
+												}
+											/>
+											<ToggleControl
+												label={ __(
 													'Show Read More Button',
 													'advance-gb-learning'
 												) }
@@ -490,6 +506,19 @@ export default function Edit( props ) {
 														),
 													},
 													{
+														value: postContentColor,
+														onChange: ( value ) => {
+															setAttributes( {
+																postContentColor:
+																	value,
+															} );
+														},
+														label: __(
+															'Post Content Color',
+															'advance-gb-learning'
+														),
+													},
+													{
 														value: btnBgColor,
 														onChange: ( value ) => {
 															setAttributes( {
@@ -538,11 +567,13 @@ export default function Edit( props ) {
 					selectedCategory,
 					selectedTag,
 					titleColor,
+					postContentColor,
 					headingColor,
 					bgColor,
 					contentBgColor,
 					btnBgColor,
 					btnTextColor,
+					displayPostContent,
 				} }
 			/>
 		</>

@@ -159,6 +159,11 @@ function Edit(props) {
     className: "media-and-content__content-wrapper"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.InnerBlocks, {
     allowedBlocks: ['core/list', 'core/paragraph', 'core/heading'],
+    template: [['core/heading', {
+      placeholder: 'Enter heading...'
+    }], ['core/paragraph', {
+      placeholder: 'Enter paragraph...'
+    }]],
     templateLock: false
   }))))));
 }
@@ -576,7 +581,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 /***/ ((module) => {
 
 "use strict";
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","name":"advance-gb-learning/media-content-block","version":"1.0.0","title":"Media Content Block","category":"advance-gb-learning","icon":"align-pull-left","description":"A media and content block in two column where you can manage left/right option for media and content.","keywords":["media","content"],"attributes":{"blockID":{"type":"string","default":""},"bgColor":{"type":"string","default":"#ffffff"},"mediaImage":{"type":"object","default":{"id":"","url":"","alt":"","width":"","height":""}},"imgAlign":{"type":"string","default":"left"},"imgSize":{"type":"string","default":"full"}},"textdomain":"advance-gb-library","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","name":"advance-gb-learning/media-content-block","version":"1.0.0","title":"Media Content Block","category":"advance-gb-learning","icon":"align-pull-left","description":"A media and content block in two column where you can manage left/right option for media and content.","keywords":["media","content"],"attributes":{"blockID":{"type":"string","default":""},"bgColor":{"type":"string","default":"#ffffff"},"mediaImage":{"type":"object","default":{"id":"","url":"/wp-content/themes/Advance-GB-Library/assets/src/images/placeholder-image.png","alt":"","width":"","height":""}},"imgAlign":{"type":"string","default":"left"},"imgSize":{"type":"string","default":"full"}},"textdomain":"advance-gb-library","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 

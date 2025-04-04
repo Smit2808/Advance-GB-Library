@@ -224,6 +224,16 @@ export default function Edit( props ) {
 									'core/paragraph',
 									'core/heading',
 								] }
+								template={ [
+									[
+										'core/heading',
+										{ placeholder: 'Enter heading...' },
+									],
+									[
+										'core/paragraph',
+										{ placeholder: 'Enter paragraph...' },
+									],
+								] }
 								templateLock={ false }
 							/>
 						</div>

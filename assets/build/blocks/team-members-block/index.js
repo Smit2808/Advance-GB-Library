@@ -81,7 +81,7 @@ function Edit(props) {
           title: '',
           description: '',
           imageID: '',
-          imageURL: '',
+          imageURL: '/wp-content/themes/Advance-GB-Library/assets/src/images/placeholder-image.png',
           imageAlt: '',
           imageWidth: '',
           imageHeight: ''
@@ -105,7 +105,7 @@ function Edit(props) {
       title: '',
       description: '',
       imageID: '',
-      imageURL: '',
+      imageURL: '/wp-content/themes/Advance-GB-Library/assets/src/images/placeholder-image.png',
       imageAlt: '',
       imageWidth: '',
       imageHeight: ''
@@ -757,7 +757,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 /***/ ((module) => {
 
 "use strict";
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","name":"advance-gb-learning/team-members-block","version":"0.1.0","title":"Team Members Block","apiVersion":3,"category":"advance-gb-learning","icon":"groups","description":"This block is used to display the team members in the grid layout. There are different styling and elements options.","keywords":["Team","Members"],"supports":{"html":false},"textdomain":"advance-gb-learning","attributes":{"blockID":{"type":"string","default":""},"bgColor":{"type":"string","default":"#0b2c56"},"teamMemberNameColor":{"type":"string","default":"#fff"},"teamMemberDescriptionColor":{"type":"string","default":"#fff"},"showTeamMemberName":{"type":"boolean","default":true},"showImage":{"type":"boolean","default":true},"teamMemberItems":{"type":"array","default":[]},"showTeamMemberDescription":{"type":"boolean","default":true},"contentAlignment":{"type":"string","default":"left"},"columns":{"type":"number","default":2}},"editorScript":"file:./index.js","style":"file:./style-index.css","editorStyle":"file:./index.css"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","name":"advance-gb-learning/team-members-block","version":"0.1.0","title":"Team Members Block","apiVersion":3,"category":"advance-gb-learning","icon":"groups","description":"This block is used to display the team members in the grid layout. There are different styling and elements options.","keywords":["Team","Members"],"supports":{"html":false},"textdomain":"advance-gb-learning","attributes":{"blockID":{"type":"string","default":""},"bgColor":{"type":"string","default":"#0b2c56"},"teamMemberNameColor":{"type":"string","default":"#fff"},"teamMemberDescriptionColor":{"type":"string","default":"#fff"},"showTeamMemberName":{"type":"boolean","default":true},"showImage":{"type":"boolean","default":true},"teamMemberItems":{"type":"array","default":[]},"showTeamMemberDescription":{"type":"boolean","default":true},"contentAlignment":{"type":"string","default":"center"},"columns":{"type":"number","default":3}},"editorScript":"file:./index.js","style":"file:./style-index.css","editorStyle":"file:./index.css"}');
 
 /***/ })
 

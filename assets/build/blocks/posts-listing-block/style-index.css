@@ -35,6 +35,17 @@
   font-weight: 400;
   margin: 0 0 20px 0;
 }
+.posts-listing-block__post-detail-wrap h6 a {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+.posts-listing-block__post-excerpt {
+  margin-bottom: 20px;
+}
+.posts-listing-block__post-excerpt a {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
 .posts-listing-block__post-read-more {
   width: -moz-max-content;
   width: max-content;
@@ -62,6 +73,8 @@
   height: 100%;
   width: 100%;
   display: block;
+  -webkit-text-decoration: none;
+  text-decoration: none;
 }
 @media (max-width: 991px) {
   .posts-listing-block__item {

@@ -37,6 +37,10 @@
 .media-and-content__content-wrapper {
   width: 48%;
 }
+.media-and-content__content-wrapper h1, .media-and-content__content-wrapper h2, .media-and-content__content-wrapper h3, .media-and-content__content-wrapper h4, .media-and-content__content-wrapper h5, .media-and-content__content-wrapper h6 {
+  font-weight: 600;
+  margin-bottom: 20px;
+}
 .media-and-content__content-wrapper p,
 .media-and-content__content-wrapper ul {
   margin: 0;

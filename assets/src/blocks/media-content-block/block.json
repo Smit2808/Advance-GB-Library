@@ -23,7 +23,7 @@
 			"type": "object",
 			"default": {
 				"id": "",
-				"url": "",
+				"url": "/wp-content/themes/Advance-GB-Library/assets/src/images/placeholder-image.png",
 				"alt": "",
 				"width": "",
 				"height": ""

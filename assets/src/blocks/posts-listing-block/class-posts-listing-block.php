@@ -218,22 +218,24 @@ class Posts_Listing_Block extends Block_Base {
 		$selectedposts       = ! empty( $attributes['currentPostID'] ) ? json_decode( $attributes['currentPostID'] ) : array();
 		$numberofpost        = ! empty( $attributes['numberOfPosts'] ) ? $attributes['numberOfPosts'] : 7;
 		$title_color         = ! empty( $attributes['titleColor'] ) ? $attributes['titleColor'] : '#000000';
-		$heading_color         = ! empty( $attributes['headingColor'] ) ? $attributes['headingColor'] : '#000000';
-		$bg_color         = ! empty( $attributes['bgColor'] ) ? $attributes['bgColor'] : '#fff';
-		$content_bg_color         = ! empty( $attributes['contentBgColor'] ) ? $attributes['contentBgColor'] : '#fff';
-		$btn_bg_color         = ! empty( $attributes['btnBgColor'] ) ? $attributes['btnBgColor'] : '#0b2c56';
-		$btn_text_color         = ! empty( $attributes['btnTextColor'] ) ? $attributes['btnTextColor'] : '#000000';
+		$post_content_color  = ! empty( $attributes['postContentColor'] ) ? $attributes['postContentColor'] : '#000000';
+		$heading_color       = ! empty( $attributes['headingColor'] ) ? $attributes['headingColor'] : '#000000';
+		$bg_color            = ! empty( $attributes['bgColor'] ) ? $attributes['bgColor'] : '#fff';
+		$content_bg_color    = ! empty( $attributes['contentBgColor'] ) ? $attributes['contentBgColor'] : '#fff';
+		$btn_bg_color        = ! empty( $attributes['btnBgColor'] ) ? $attributes['btnBgColor'] : '#000';
+		$btn_text_color      = ! empty( $attributes['btnTextColor'] ) ? $attributes['btnTextColor'] : '#fff';
 		$selectedposts_array = ! empty( $selectedposts ) ? wp_list_pluck( $selectedposts, 'value' ) : array();
 		$selected_category   = ! empty( $attributes['selectedCategory'] ) ? $attributes['selectedCategory'] : '';
 		$selected_tag        = ! empty( $attributes['selectedTag'] ) ? $attributes['selectedTag'] : '';
 		$read_more_btn_text  = ! empty( $attributes['readMoreBtnText'] ) ? $attributes['readMoreBtnText'] : __( 'Read More', 'advance-gb-learning' );
 
-		$bg_style = 'background-color: ' . $bg_color . ';';
-		$style_heading_attr = 'color: ' . $heading_color . ';';
-		$post_content_bg_style = 'background-color: ' . $content_bg_color . ';';
-		$style_post_title_attr = 'color: ' . $title_color . ';';
-		$style_btn_bg_attr = 'background-color: ' . $btn_bg_color . ';';
-		$style_btn_text_attr = 'color: ' . $btn_text_color . ';';
+		$bg_style                = 'background-color: ' . $bg_color . ';';
+		$style_heading_attr      = 'color: ' . $heading_color . ';';
+		$post_content_bg_style   = 'background-color: ' . $content_bg_color . ';';
+		$style_post_title_attr   = 'color: ' . $title_color . ';';
+		$style_post_content_attr = 'color: ' . $post_content_color . ';';
+		$style_btn_bg_attr       = 'background-color: ' . $btn_bg_color . ';';
+		$style_btn_text_attr     = 'color: ' . $btn_text_color . ';';
 
 		$wrapper_attributes = get_block_wrapper_attributes(
 			array(
@@ -307,6 +309,15 @@ class Posts_Listing_Block extends Block_Base {
 												</a>
 											</h6>
 										</div>
+										<?php if ( $attributes['displayPostContent'] ) { ?>
+											<div class="posts-listing-block__post-excerpt">
+												<p>
+													<a style="<?php echo esc_attr( $style_post_content_attr ); ?>" href="<?php echo esc_url( get_the_permalink() ); ?>">
+														<?php echo wp_trim_words( get_the_excerpt(), 15, '...' ); ?>
+													</a>
+												</p>
+											</div>
+										<?php } ?>
 										<?php
 										if ( $attributes['displayReadmoreBtn'] ) {
 											?>

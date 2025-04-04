@@ -18,15 +18,19 @@
 		},
 		"headingColor": {
 			"type": "string",
-			"default": ""
+			"default": "#000000"
 		},
 		"bgColor": {
 			"type": "string",
-			"default": ""
+			"default": "#fff"
 		},
 		"titleColor": {
 			"type": "string",
-			"default": ""
+			"default": "#000000"
+		},
+		"postContentColor": {
+			"type": "string",
+			"default": "#000000"
 		},
 		"contentBgColor": {
 			"type": "string",
@@ -61,6 +65,10 @@
 			"default": 6
 		},
 		"displayTitle": {
+			"type": "boolean",
+			"default": true
+		},
+		"displayPostContent": {
 			"type": "boolean",
 			"default": true
 		},

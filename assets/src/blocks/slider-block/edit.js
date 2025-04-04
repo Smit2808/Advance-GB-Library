@@ -97,7 +97,8 @@ export default function Edit( props ) {
 						title: '',
 						description: '',
 						imageID: '',
-						imageURL: '',
+						imageURL:
+							'/wp-content/themes/Advance-GB-Library/assets/src/images/placeholder-image.png',
 						imageAlt: '',
 						imageWidth: '',
 						imageHeight: '',
@@ -125,7 +126,8 @@ export default function Edit( props ) {
 				title: '',
 				description: '',
 				imageID: '',
-				imageURL: '',
+				imageURL:
+					'/wp-content/themes/Advance-GB-Library/assets/src/images/placeholder-image.png',
 				imageAlt: '',
 				imageWidth: '',
 				imageHeight: '',

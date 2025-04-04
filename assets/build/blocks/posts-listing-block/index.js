@@ -2449,7 +2449,9 @@ function Edit(props) {
     bgColor,
     contentBgColor,
     btnBgColor,
-    btnTextColor
+    btnTextColor,
+    displayPostContent,
+    postContentColor
   } = attributes;
   const [pageList, setpageList] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_5__.useState)([]);
   const [termTypesList, setTermTypesList] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_5__.useState)([]);
@@ -2648,6 +2650,12 @@ function Edit(props) {
       heading
     })
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToggleControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Post Content', 'advance-gb-learning'),
+    checked: displayPostContent,
+    onChange: displayPostContent => setAttributes({
+      displayPostContent
+    })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToggleControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Read More Button', 'advance-gb-learning'),
     checked: displayReadmoreBtn,
     onChange: displayReadmoreBtn => setAttributes({
@@ -2697,6 +2705,14 @@ function Edit(props) {
       },
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Post Title Color', 'advance-gb-learning')
     }, {
+      value: postContentColor,
+      onChange: value => {
+        setAttributes({
+          postContentColor: value
+        });
+      },
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Post Content Color', 'advance-gb-learning')
+    }, {
       value: btnBgColor,
       onChange: value => {
         setAttributes({
@@ -2726,11 +2742,13 @@ function Edit(props) {
       selectedCategory,
       selectedTag,
       titleColor,
+      postContentColor,
       headingColor,
       bgColor,
       contentBgColor,
       btnBgColor,
-      btnTextColor
+      btnTextColor,
+      displayPostContent
     }
   }));
 }
@@ -14426,7 +14444,7 @@ function combine (array, callback) {
 /***/ ((module) => {
 
 "use strict";
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","name":"advance-gb-learning/posts-listing-block","version":"0.1.0","title":"Posts Listing Block","category":"advance-gb-learning","icon":"images-alt","description":"This is a dynamic block which list out the posts. There are different settings to list out the posts.","keywords":["Posts","Listing","Dynamic"],"supports":{"html":false},"textdomain":"advance-gb-learning","attributes":{"heading":{"type":"string","default":""},"headingColor":{"type":"string","default":""},"bgColor":{"type":"string","default":""},"titleColor":{"type":"string","default":""},"contentBgColor":{"type":"string","default":""},"btnTextColor":{"type":"string","default":""},"btnBgColor":{"type":"string","default":""},"currentPostID":{"type":"string","default":null},"blockID":{"type":"string","default":"post-grid-slider-block-unique-80afa3ca-6e04-474e-9f43-51bf00997e1c"},"displayReadmoreBtn":{"type":"boolean","default":true},"readMoreBtnText":{"type":"string","default":"Read More"},"numberOfPosts":{"type":"number","default":6},"displayTitle":{"type":"boolean","default":true},"selectedCategory":{"type":"string","default":""},"selectedTag":{"type":"string","default":""}},"editorScript":"file:./index.js","style":"file:./style-index.css","editorStyle":"file:./index.css"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","name":"advance-gb-learning/posts-listing-block","version":"0.1.0","title":"Posts Listing Block","category":"advance-gb-learning","icon":"images-alt","description":"This is a dynamic block which list out the posts. There are different settings to list out the posts.","keywords":["Posts","Listing","Dynamic"],"supports":{"html":false},"textdomain":"advance-gb-learning","attributes":{"heading":{"type":"string","default":""},"headingColor":{"type":"string","default":"#000000"},"bgColor":{"type":"string","default":"#fff"},"titleColor":{"type":"string","default":"#000000"},"postContentColor":{"type":"string","default":"#000000"},"contentBgColor":{"type":"string","default":""},"btnTextColor":{"type":"string","default":""},"btnBgColor":{"type":"string","default":""},"currentPostID":{"type":"string","default":null},"blockID":{"type":"string","default":"post-grid-slider-block-unique-80afa3ca-6e04-474e-9f43-51bf00997e1c"},"displayReadmoreBtn":{"type":"boolean","default":true},"readMoreBtnText":{"type":"string","default":"Read More"},"numberOfPosts":{"type":"number","default":6},"displayTitle":{"type":"boolean","default":true},"displayPostContent":{"type":"boolean","default":true},"selectedCategory":{"type":"string","default":""},"selectedTag":{"type":"string","default":""}},"editorScript":"file:./index.js","style":"file:./style-index.css","editorStyle":"file:./index.css"}');
 
 /***/ })
 
